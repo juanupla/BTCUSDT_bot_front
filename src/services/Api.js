@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://localhost:8080', // Reemplaza con la URL de tu API
+  baseURL: 'https://localhost:8080',
 });
 
 export const getEMAs = () => {
@@ -34,6 +34,6 @@ export const postLogin = (email, password) => {
       .then(response => response.data)
       .catch(error => {
         console.error('Error en el login:', error);
-        throw error;  // Propagar el error si es necesario
+        throw error; 
       });
   };
