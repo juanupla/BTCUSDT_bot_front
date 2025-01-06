@@ -1,20 +1,35 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://localhost:8080',
+  baseURL: 'http://localhost:8080/',
 });
 
-export const getEMAs = () => {
-  return api.get('api/v1/historical-emas').then(response => response.data);
+export const getEMAs = async () => {
+  try {
+    const response = await api.get('api/v1/historical-emas');  // Ajusta esta URL a tu endpoint correcto
+    return response.data;  // Devolvemos la respuesta completa
+  } catch (error) {
+    console.error('Error fetching EMAs:', error);
+    return { status: 'ERROR', message: error.message, data: [] };
+  }
 };
+
 
 export const getOperations = () => {
   return api.get('api/v1/public-historical-operations').then(response => response.data);
 };
 
-export const getStatus = () => {
-    return api.get('api/v1/bot-status').then(response => response.data);
-  };
+export const getStatus = async () => {
+  try {
+    const response = await api.get('api/v1/bot-status'); // Usar la instancia de axios configurada
+    const { data } = response.data; // Extraer el `data` del Response
+    return data ? 'Running' : 'Stopped'; // Convertir el booleano en texto
+  } catch (error) {
+    console.error('Error fetching bot status:', error);
+    return 'Error fetching status';
+  }
+};
+
 
 export const getClosedOperations = () => {
   return api.get('api/v1/public-closed-operations').then(response => response.data);

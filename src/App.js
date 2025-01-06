@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/dashboard';
 import Operations from './pages/Operations';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

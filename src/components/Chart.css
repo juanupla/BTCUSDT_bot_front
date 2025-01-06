@@ -1,0 +1,68 @@
+.chart-container {
+    width: 100%;
+    height: 400px;
+    background-color: #1a1a1a;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .chart-container .recharts-wrapper {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  /* Grid y ejes */
+  .chart-container .recharts-cartesian-grid-horizontal line,
+  .chart-container .recharts-cartesian-grid-vertical line {
+    stroke: #444444;
+  }
+  
+  .chart-container .recharts-xAxis .recharts-axis-line,
+  .chart-container .recharts-yAxis .recharts-axis-line {
+    stroke: #888888;
+  }
+  
+  .chart-container .recharts-text {
+    fill: #888888;
+  }
+  
+  /* Líneas EMA con colores específicos */
+  .chart-container path.recharts-line-curve[stroke="#ff6b6b"],
+  .chart-container .recharts-legend-item-EMA-21 .recharts-legend-item-text {
+    stroke: #ff6b6b !important;
+    color: #ff6b6b !important;
+  }
+  
+  .chart-container path.recharts-line-curve[stroke="#4ecdc4"],
+  .chart-container .recharts-legend-item-EMA-50 .recharts-legend-item-text {
+    stroke: #4ecdc4 !important;
+    color: #4ecdc4 !important;
+  }
+  
+  .chart-container path.recharts-line-curve[stroke="#fed330"],
+  .chart-container .recharts-legend-item-EMA-200 .recharts-legend-item-text {
+    stroke: #fed330 !important;
+    color: #fed330 !important;
+  }
+  
+  /* Tooltip */
+  .recharts-tooltip-wrapper .recharts-default-tooltip {
+    background-color: #1a1a1a !important;
+    border: 1px solid #333 !important;
+    color: #888888;
+  }
+  
+  /* Brush y su posición */
+  .chart-container .recharts-brush {
+    transform: translateY(20px);
+  }
+  
+  .chart-container .recharts-brush rect {
+    fill: #2a2a2a;
+  }
+  
+  .chart-container .recharts-brush .recharts-brush-traveller {
+    fill: #444444;
+  }
