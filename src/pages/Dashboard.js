@@ -3,7 +3,7 @@ import Chart from '../components/Chart';
 import { getEMAs, getStatus } from '../services/Api';
 
 const Dashboard = () => {
-  const [emasData, setEmasData] = useState(null);  // Cambié el estado inicial
+  const [emasData, setEmasData] = useState([]);  // Cambié el estado inicial
   const [botStatus, setBotStatus] = useState('');
   const [loading, setLoading] = useState(true);
 
@@ -34,9 +34,13 @@ const Dashboard = () => {
     <div>
       <h2>Dashboard</h2>
       <div className="row">
-        <div className="col-md-12">
+      <div className="col-12">
           <h3>EMAs</h3>
-          <Chart />
+          {emasData ? (
+            <Chart apiData={emasData} /> // Pasamos los datos como props
+          ) : (
+            <p>No hay datos disponibles para mostrar.</p>
+          )}
         </div>
         <div className="col-md-6">
           <h3>Bot Status</h3>

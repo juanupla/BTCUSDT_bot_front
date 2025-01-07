@@ -6,11 +6,11 @@ const api = axios.create({
 
 export const getEMAs = async () => {
   try {
-    const response = await api.get('api/v1/historical-emas');  // Ajusta esta URL a tu endpoint correcto
-    return response.data;  // Devolvemos la respuesta completa
+    const response = await api.get('api/v1/historical-emas'); 
+    return response.data.data; // Solo devolvemos el array de datos
   } catch (error) {
     console.error('Error fetching EMAs:', error);
-    return { status: 'ERROR', message: error.message, data: [] };
+    return []; 
   }
 };
 

@@ -12,13 +12,15 @@ import {
   Brush
 } from 'recharts';
 
-const Chart = () => {
-  const data = Array.from({ length: 48 }, (_, i) => ({
-    timestamp: new Date(2024, 0, 1, i).getTime(),
-    ema21: 40000 + Math.sin(i/10) * 2000 + Math.random() * 500,
-    ema50: 41000 + Math.cos(i/10) * 1500 + Math.random() * 300,
-    ema200: 42000 + Math.sin(i/20) * 1000 + Math.random() * 100
-  }));
+const Chart = ({apiData}) => {
+  const data = apiData
+    .map((item) => ({
+      timestamp: new Date(item.date).getTime(),
+      ema21: item.ema21,
+      ema50: item.ema50,
+      ema200: item.ema200,
+    }))
+    .reverse(); // Invertimos el orden de los datos
 
   const formatXAxis = (timestamp) => {
     const date = new Date(timestamp);
@@ -30,10 +32,9 @@ const Chart = () => {
     return `${date.toLocaleDateString()} - ${date.getHours()}:00hs`;
   };
 
-  const formatBrush = (timestamp) => {
-    const date = new Date(timestamp);
-    return `${date.getDate()}/${date.getMonth() + 1}`;
-  };
+
+  const endIndex = data.length - 1;
+  const startIndex = Math.max(endIndex - 400, 10);
 
   return (
     <div className="chart-container">
@@ -44,7 +45,7 @@ const Chart = () => {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis 
-            dataKey="timestamp" 
+            dataKey="timestamp"
             tickFormatter={formatXAxis}
             angle={-45}
             textAnchor="end"
@@ -55,6 +56,7 @@ const Chart = () => {
           <YAxis 
             domain={['auto', 'auto']}
             tickFormatter={(value) => `$${value.toLocaleString()}`}
+            orientation="right"  // Eje Y a la derecha
           />
           <Tooltip 
             labelFormatter={formatTooltip}
@@ -62,35 +64,35 @@ const Chart = () => {
           />
           <Legend verticalAlign="top" height={36}/>
           <Line 
-            type="monotone" 
-            dataKey="ema21" 
+            type="monotone"
+            dataKey="ema21"
             stroke="#ff6b6b"
-            dot={false} 
+            dot={false}
             strokeWidth={2}
             name="EMA 21"
           />
           <Line 
-            type="monotone" 
-            dataKey="ema50" 
+            type="monotone"
+            dataKey="ema50"
             stroke="#4ecdc4"
-            dot={false} 
+            dot={false}
             strokeWidth={2}
             name="EMA 50"
           />
           <Line 
-            type="monotone" 
-            dataKey="ema200" 
+            type="monotone"
+            dataKey="ema200"
             stroke="#fed330"
-            dot={false} 
+            dot={false}
             strokeWidth={2}
             name="EMA 200"
           />
           <Brush
             dataKey="timestamp"
             height={30}
-            tickFormatter={formatBrush}
-            startIndex={Math.max(0, data.length - 24)}
-            endIndex={data.length - 1}
+            tickFormatter={()=>''}
+            startIndex={startIndex}
+            endIndex={endIndex}
             margin={{ top: 20 }}
           />
         </LineChart>
