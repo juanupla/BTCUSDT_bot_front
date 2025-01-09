@@ -23,7 +23,7 @@ export const getStatus = async () => {
   try {
     const response = await api.get('api/v1/bot-status'); // Usar la instancia de axios configurada
     const { data } = response.data; // Extraer el `data` del Response
-    return data ? 'Running' : 'Stopped'; // Convertir el booleano en texto
+    return data
   } catch (error) {
     console.error('Error fetching bot status:', error);
     return 'Error fetching status';

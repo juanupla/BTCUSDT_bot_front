@@ -1,0 +1,9 @@
+.img12 {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    margin: 0 auto;
+    border-radius: 5vh; /* Ajusta este valor según cuán redondeado lo quieras */
+
+}

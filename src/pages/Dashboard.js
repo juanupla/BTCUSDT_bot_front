@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Chart from '../components/Chart';
 import { getEMAs, getStatus } from '../services/Api';
+import BotStatus from '../components/BotStatus';
+
 
 const Dashboard = () => {
   const [emasData, setEmasData] = useState([]);  // Cambié el estado inicial
-  const [botStatus, setBotStatus] = useState('');
+  const [botStatus, setBotStatus] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -34,17 +36,16 @@ const Dashboard = () => {
     <div>
       <h2>Dashboard</h2>
       <div className="row">
-      <div className="col-12">
+        <div className='col-12'>
+          {botStatus ? (<BotStatus apiData={botStatus}></BotStatus>):(false)}
+        </div>
+        <div className="col-12">
           <h3>EMAs</h3>
           {emasData ? (
             <Chart apiData={emasData} /> // Pasamos los datos como props
           ) : (
             <p>No hay datos disponibles para mostrar.</p>
           )}
-        </div>
-        <div className="col-md-6">
-          <h3>Bot Status</h3>
-          <p>Running</p>
         </div>
       </div>
     </div>

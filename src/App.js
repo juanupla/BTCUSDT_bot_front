@@ -10,7 +10,7 @@ const App = () => {
       <Header />
       <div className="container-fluid">
         <div className="row">
-          <div className="col-12">
+          <div className="col-lg-12 col-md-12 col-sm-12">
             <Routes>
               <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
