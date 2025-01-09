@@ -37,7 +37,7 @@ const Dashboard = () => {
       <h2>Dashboard</h2>
       <div className="row">
         <div className='col-12'>
-          {botStatus ? (<BotStatus apiData={botStatus}></BotStatus>):(false)}
+        <BotStatus apiData={botStatus}></BotStatus>
         </div>
         <div className="col-12">
           <h3>EMAs</h3>

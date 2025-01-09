@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './Header.css';
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">BTC/USDT Bot</Link>
-      <div className="collapse navbar-collapse">
+      <Link className="navbar-brand" to="/">BTC-Strategy</Link>
+      
+      {/* Botón hamburguesa */}
+      <button 
+        className="navbar-toggler" 
+        type="button" 
+        onClick={toggleMenu}
+        aria-controls="navbarNav" 
+        aria-expanded={isOpen} 
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+
+      <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
             <Link className="nav-link" to="/dashboard">Dashboard</Link>

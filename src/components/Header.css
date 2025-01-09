@@ -1,0 +1,4 @@
+/* evitar el efecto de selección */
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }

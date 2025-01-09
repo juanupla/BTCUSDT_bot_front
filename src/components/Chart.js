@@ -34,7 +34,7 @@ const Chart = ({apiData}) => {
 
 
   const endIndex = data.length - 1;
-  const startIndex = Math.max(endIndex - 500, 0);
+  const startIndex = Math.max(endIndex - 1000, 0);
 
   return (
     <div className="chart-container">

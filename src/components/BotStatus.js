@@ -5,10 +5,10 @@ const BotStatus = ({apiData}) => {
     if(apiData){
         return(
             <div className='container-fluid'>
-                <div className='row img-contain'>
+                <div className='row'>
                     <img 
-                        className='img12' 
-                        src='/botStatusOn.png' 
+                        className='img12 col-12' 
+                        src='./botStatusOn.jpg' 
                         alt='Bot Status'
                         onError={(e) => {
                             console.error('Error loading image:', e);
@@ -17,14 +17,18 @@ const BotStatus = ({apiData}) => {
                 </div>
             </div>
         )
-    }
-    else{
+    }else{
         return(
             <div className='container-fluid'>
                 <div className='row'>
-                    <div className='col-12'>
-                        <div>chau</div>
-                    </div>
+                    <img 
+                        className='img12 col-12' 
+                        src='./botStatusOff.jpg' 
+                        alt='Bot Status'
+                        onError={(e) => {
+                            console.error('Error loading image:', e);
+                        }}
+                    />
                 </div>
             </div>
         )

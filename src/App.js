@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Dashboard from './pages/dashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,11 +7,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
   return (
     <Router>
-      <Header />
+      <Header/>
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-12 col-md-12 col-sm-12">
             <Routes>
+              <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
           </div>
