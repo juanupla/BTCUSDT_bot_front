@@ -8,7 +8,7 @@ const App = () => {
   return (
     <Router>
       <Header/>
-      <div className="container-fluid">
+      <div className="container-fluid bg-black">
         <div className="row">
           <div className="col-lg-12 col-md-12 col-sm-12">
             <Routes>

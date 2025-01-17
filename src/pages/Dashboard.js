@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Chart from '../components/Chart';
 import { getEMAs, getStatus } from '../services/Api';
 import BotStatus from '../components/BotStatus';
+import './dashboard.css'
 
 
 const Dashboard = () => {
@@ -33,14 +34,15 @@ const Dashboard = () => {
   }
 
   return (
-    <div>
-      <h2>Dashboard</h2>
-      <div className="row">
+    <div className='container-fluid pan'>
+      <h2 className='status'>Status</h2>
+      <div className="row cont">
         <div className='col-12'>
-        <BotStatus apiData={botStatus}></BotStatus>
+          <BotStatus apiData={botStatus}></BotStatus>
         </div>
-        <div className="col-12">
-          <h3>EMAs</h3>
+        <hr className='hr'></hr>
+        <div className="col-12 ema">
+          <h3 className='emasTittle'>Exponential moving averages</h3>
           {emasData ? (
             <Chart apiData={emasData} /> // Pasamos los datos como props
           ) : (

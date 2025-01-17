@@ -1,0 +1,28 @@
+.pan{
+    background-color: black;
+
+}
+.status{
+    padding-top: 1%;
+    color: rgb(61, 61, 61);
+    align-items: center;
+}
+
+.ema{
+    width: 85% !important;
+    background-color: rgb(19, 19, 19);
+    text-align: center;
+}
+
+.hr{
+    color: aliceblue;
+}
+
+.cont{
+    align-items: center;
+    justify-content: center;
+}
+
+.emasTittle{
+    color: rgb(252, 196, 132);
+}
