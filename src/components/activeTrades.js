@@ -23,20 +23,22 @@ const ActiveTrades = () => {
     return (
       <div className="trades-container">
         <h2 className="trades-title">Active Trades</h2>
-        {trades.map((trade, index) => (
-          <div key={index} className="trade-item">
-            <div className="trade-info">
-              <div className="trade-date">Date: {trade.date}</div>
-              <div className="trade-type">
-                Type: <span className={trade.type.toLowerCase()}>{trade.type}</span>
-                Ticket: {trade.ticket}
+        <div className="trades-scroll-container">
+          {trades.map((trade, index) => (
+            <div key={index} className="trade-item">
+              <div className="trade-info">
+                <div className="trade-date">Date: {trade.date}</div>
+                <div className="trade-type">
+                  Type: <span className={trade.type.toLowerCase()}>{trade.type}</span>
+                  Ticker: {trade.ticket}
+                </div>
+              </div>
+              <div className="trade-price">
+                Price: ${Number(trade.price).toFixed(2)}
               </div>
             </div>
-            <div className="trade-price">
-              Price: ${Number(trade.price).toFixed(2)}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   };

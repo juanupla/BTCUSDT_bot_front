@@ -11,8 +11,9 @@ const Header = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark ">
-      <Link className="navbar-brand BTCStra" to="/">BTC-Strategy</Link>
       
+      <Link className="navbar-brand BTCStra" to="/">BTC-Strategy</Link>
+
       {/* Botón hamburguesa */}
       <button 
         className="navbar-toggler" 
@@ -31,11 +32,12 @@ const Header = () => {
             <Link className="nav-link" to="/dashboard">Dashboard</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/operations">Operations</Link>
+            <Link className="nav-link" to="/performance">Performance</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/login">Login</Link>
           </li>
+          
         </ul>
       </div>
     </nav>

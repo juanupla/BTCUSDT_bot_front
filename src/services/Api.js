@@ -1,13 +1,16 @@
 import axios from 'axios';
+import { getToken, saveToken } from './Auth';
+
 
 const api = axios.create({
   baseURL: 'http://localhost:8080/',
 });
 
+
 export const getEMAs = async () => {
   try {
     const response = await api.get('api/v1/historical-emas'); 
-    return response.data.data; // Solo devolvemos el array de datos
+    return response.data.data;
   } catch (error) {
     console.error('Error fetching EMAs:', error);
     return []; 
@@ -16,8 +19,14 @@ export const getEMAs = async () => {
 
 
 export const getOperations = async () => {
-  return api.get('api/v1/public-historical-operations').then(response => response.data);
+  const now = new Date().toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" });
+  const currentDate = new Date(now).toISOString(); // convierte a formato ISO - requerida por la ap
+  const oneYearAgo = new Date(new Date(now).setFullYear(new Date(now).getFullYear() - 1)).toISOString();
+  return api
+    .get(`api/v1/public-historical-operations?start=${oneYearAgo}&end=${currentDate}`)
+    .then(response => response.data);
 };
+
 
 export const getStatus = async () => {
   try {
@@ -43,12 +52,15 @@ export const getPerformancePerMonth = () => {
   return api.get('api/v1/performance-per-month').then(response => response.data);
 };
 
-export const postLogin = (email, password) => {
-    return api
-      .post('api/auth/login', { email, password })  
-      .then(response => response.data)
-      .catch(error => {
-        console.error('Error en el login:', error);
-        throw error; 
-      });
-  };
+export const postLogin = async (email, password) => {
+  try {
+    const response = await api.post('api/auth/login', { email, password });
+    if (response.data.data.token) {
+      saveToken(response.data.data.token);
+    }
+    return response.data;
+  } catch (error) {
+    console.error('Error en el login:', error);
+    throw error;
+  }
+};

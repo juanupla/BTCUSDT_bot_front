@@ -7,7 +7,7 @@ import './dashboard.css'
 
 
 const Dashboard = () => {
-  const [emasData, setEmasData] = useState([]);  // Cambié el estado inicial
+  const [emasData, setEmasData] = useState([]); 
   const [botStatus, setBotStatus] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -15,7 +15,7 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const emas = await getEMAs();
-        setEmasData(emas);  // Aquí ya no procesamos los datos, los pasamos directamente
+        setEmasData(emas);  
         
         const status = await getStatus();
         setBotStatus(status);
@@ -43,11 +43,11 @@ const Dashboard = () => {
         </div>
         <hr className='hr'></hr>
         <div className="col-12 ema">
-          <h3 className='emasTittle'>Exponential moving averages</h3>
-          {emasData ? (
-            <Chart apiData={emasData} /> // Pasamos los datos como props
-          ) : (
-            <p>No hay datos disponibles para mostrar.</p>
+          <h3 className='emasTittle'>Exponential moving averages - [1h]</h3>
+           {emasData.length > 0 ? (
+           <Chart apiData={emasData} /> 
+           ) : (
+          <p>No hay datos disponibles para mostrar.</p>
           )}
         </div>
         <div className='col-12 activeTrades'>

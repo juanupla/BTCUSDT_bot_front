@@ -1,0 +1,65 @@
+/* Wrapper for the entire login component */
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a, #000000);
+    color: #ffffff;
+  }
+  
+  /* Container for the login form */
+  .login-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    width: 350px;
+    text-align: center;
+  }
+  
+  .login-logo {
+    width: 60px;
+    margin-bottom: 15px;
+  }
+  
+  .welcome-text {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333333;
+  }
+  
+  /* Input styles */
+  .login-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  /* Button styles */
+  .login-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #f7931a; /* Bitcoin orange */
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .login-container button:hover {
+    background-color: #e68000;
+  }
+  
+  /* Error message */
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
