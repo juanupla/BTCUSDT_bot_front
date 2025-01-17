@@ -35,7 +35,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className='container-fluid pan'>
+    <div className='container-fluid panel'>
       <h2 className='status'>Status</h2>
       <div className="row cont">
         <div className='col-12'>

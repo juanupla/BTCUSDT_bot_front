@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark ">
-      <Link className="navbar-brand" to="/">BTC-Strategy</Link>
+      <Link className="navbar-brand BTCStra" to="/">BTC-Strategy</Link>
       
       {/* Botón hamburguesa */}
       <button 
