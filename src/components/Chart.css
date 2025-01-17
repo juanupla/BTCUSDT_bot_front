@@ -3,7 +3,7 @@
     height: 60vh;
     background-color: #1a1a1a;
     padding: 12px;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-bottom: 20px;
     position: relative;
   }
@@ -43,8 +43,8 @@
   
   .chart-container path.recharts-line-curve[stroke="#fed330"],
   .chart-container .recharts-legend-item-EMA-200 .recharts-legend-item-text {
-    stroke: #fed330 !important;
-    color: #fed330 !important;
+    stroke: #ffa52e !important;
+    color: #ffa52e !important;
   }
   
   /* Tooltip */

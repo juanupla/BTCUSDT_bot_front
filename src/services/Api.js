@@ -15,7 +15,7 @@ export const getEMAs = async () => {
 };
 
 
-export const getOperations = () => {
+export const getOperations = async () => {
   return api.get('api/v1/public-historical-operations').then(response => response.data);
 };
 

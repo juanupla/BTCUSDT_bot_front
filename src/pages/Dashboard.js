@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Chart from '../components/Chart';
 import { getEMAs, getStatus } from '../services/Api';
 import BotStatus from '../components/BotStatus';
+import ActiveTrades from '../components/activeTrades';
 import './dashboard.css'
 
 
@@ -48,6 +49,9 @@ const Dashboard = () => {
           ) : (
             <p>No hay datos disponibles para mostrar.</p>
           )}
+        </div>
+        <div className='col-12 activeTrades'>
+          <ActiveTrades />  
         </div>
       </div>
     </div>

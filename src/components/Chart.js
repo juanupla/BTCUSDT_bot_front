@@ -82,7 +82,7 @@ const Chart = ({apiData}) => {
           <Line 
             type="monotone"
             dataKey="ema200"
-            stroke="#fed330"
+            stroke="#ffa52e"
             dot={false}
             strokeWidth={2}
             name="EMA 200"

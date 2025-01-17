@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark ">
       <Link className="navbar-brand" to="/">BTC-Strategy</Link>
       
       {/* Botón hamburguesa */}
@@ -32,6 +32,9 @@ const Header = () => {
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/operations">Operations</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/login">Login</Link>
           </li>
         </ul>
       </div>

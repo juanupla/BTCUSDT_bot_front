@@ -1,0 +1,108 @@
+.trades-container {
+    background-color: #1a1a1a;
+    padding: 20px;
+    color: white;
+    width: 100%;
+    margin: 0.5vh auto 1.5vh auto;
+    border-radius: 10px;
+}
+
+.trades-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.trade-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+}
+
+.trade-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.trade-date {
+    color: #999;
+    font-size: 14px;
+    text-align: left; /* Aseguramos alineación izquierda */
+    width: 100%; /* Aseguramos que tome todo el ancho disponible */
+}
+
+.trade-type {
+    display: flex;
+    gap: 15px;
+    color: #999;
+    font-size: 14px;
+}
+
+.trade-type .buy {
+    color: #4caf50;
+}
+
+.trade-type .sell {
+    color: #f44336;
+}
+
+.trade-price {
+    font-size: 16px;
+    text-align: right;
+}
+
+/* Media queries para responsividad */
+@media screen and (max-width: 768px) {
+    .trades-title {
+        font-size: 20px;
+    }
+
+    .trade-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .trade-info {
+        width: 100%;
+        align-items: flex-start; /* Aseguramos alineación izquierda de los elementos */
+    }
+
+    .trade-type {
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%; /* Aseguramos que tome todo el ancho */
+    }
+
+    .trade-price {
+        width: 100%;
+        text-align: left;
+        margin-top: 5px;
+    }
+
+    .trade-date {
+        padding-left: 0; /* Eliminamos cualquier padding que pudiera estar causando el centrado */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .trades-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .trades-title {
+        font-size: 18px;
+    }
+
+    .trade-date,
+    .trade-type,
+    .trade-price {
+        font-size: 13px;
+    }
+
+    .trade-item {
+        padding: 12px 0;
+    }
+}
