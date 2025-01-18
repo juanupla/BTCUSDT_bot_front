@@ -43,7 +43,7 @@
   .login-container button {
     width: 100%;
     padding: 12px;
-    background-color: #f7931a; /* Bitcoin orange */
+    background-color: #f7931a; 
     border: none;
     border-radius: 8px;
     color: #ffffff;
@@ -63,3 +63,19 @@
     margin-top: 10px;
   }
   
+/* estilo para el icono del ojo */
+.btn-link i.bi {
+  color: #000000;
+  font-size: 1.2rem;
+}
+
+/* sin color azul en el btn */
+.btn-link {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/*  hover naranja */
+.btn-link:hover i.bi {
+  color: #f7931a; 
+}

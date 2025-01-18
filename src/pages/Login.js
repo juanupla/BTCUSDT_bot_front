@@ -1,4 +1,3 @@
-// components/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { postLogin } from '../services/Api';
@@ -8,6 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -20,6 +20,10 @@ const Login = () => {
     } catch (err) {
       setError('Error en el login. Verifica tus credenciales.');
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   return (
@@ -39,13 +43,29 @@ const Login = () => {
             placeholder="Email"
             required
           />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            required
-          />
+          <div className="position-relative">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              required
+              className="pe-5"
+            />
+            <button
+              type="button"
+              className="btn btn-link position-absolute end-0 top-50 translate-middle-y eyesBtn"
+              onClick={togglePasswordVisibility}
+              style={{ 
+                border: 'none', 
+                background: 'none',
+                padding: '0 12px',
+                marginTop: '-2px',
+                width: 'auto'}}
+            >
+              <i className={`bi ${showPassword ? 'bi-eye-slash' : 'bi-eye'}`}></i>
+            </button>
+          </div>
           {error && <p className="error">{error}</p>}
           <button type="submit">Login</button>
         </form>
