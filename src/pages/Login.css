@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #1a1a1a, #000000);
+    background: radial-gradient(circle closest-side, #494949, #000000);
     color: #ffffff;
   }
   
