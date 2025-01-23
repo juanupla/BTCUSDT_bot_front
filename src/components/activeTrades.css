@@ -16,7 +16,7 @@
     max-height: 400px; 
     overflow-y: auto;
 
-    /* scroll tema dark */
+    /* scroll dark */
     scrollbar-width: thin;
     scrollbar-color: #333 #1a1a1a;
 }
@@ -83,7 +83,7 @@
 
 @media screen and (max-width: 768px) {
     .trades-scroll-container {
-        max-height: 350px; /*  altura para celulares */
+        max-height: 350px; 
     }
 
     .trades-title {
@@ -120,7 +120,7 @@
     }
 
     .trades-scroll-container {
-        max-height: 300px; /* para pantallas pequeñas */
+        max-height: 300px; /*  pantallas + pequeñas */
     }
 
     .trades-title {

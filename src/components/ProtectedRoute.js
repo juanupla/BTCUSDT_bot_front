@@ -1,4 +1,3 @@
-// components/ProtectedRoute.js
 import { Navigate } from 'react-router-dom';
 import { getToken } from '../services/Auth';
 import { jwtDecode } from 'jwt-decode';

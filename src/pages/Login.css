@@ -1,14 +1,14 @@
-/* Wrapper for the entire login component */
+/* login component */
 .login-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: radial-gradient(circle closest-side, #494949, #000000);
+    background: radial-gradient(circle closest-side, #3b3b3b, #000000);
     color: #ffffff;
   }
   
-  /* Container for the login form */
+  /* container login form */
   .login-container {
     background-color: #ffffff;
     border-radius: 12px;
@@ -29,7 +29,7 @@
     color: #333333;
   }
   
-  /* Input styles */
+  /* inputs styles */
   .login-container input {
     width: 100%;
     padding: 12px;
@@ -39,7 +39,7 @@
     font-size: 16px;
   }
   
-  /* Button styles */
+  /* button styles */
   .login-container button {
     width: 100%;
     padding: 12px;
@@ -56,7 +56,7 @@
     background-color: #e68000;
   }
   
-  /* Error message */
+  /* error message */
   .error {
     color: red;
     font-size: 14px;

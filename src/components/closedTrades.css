@@ -1,0 +1,186 @@
+.closed-trades-container {
+    background-color: #1a1a1a;
+    padding: 20px;
+    color: white;
+    width: 100%;
+    margin: 2vh auto 3vh auto;
+    border-radius: 20px;
+}
+
+.closed-trades-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.closed-trades-scroll-container {
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #333 #1a1a1a;
+}
+
+.closed-trades-scroll-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.closed-trades-scroll-container::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 4px;
+}
+
+.closed-trades-scroll-container::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+.closed-trades-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+.closed-trade-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+}
+
+.closed-trade-left {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+}
+
+.closed-trade-right {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+}
+
+.closed-trade-dates {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #999;
+    font-size: 14px;
+}
+
+.closed-trade-date-from,
+.closed-trade-date-to {
+    text-align: left;
+}
+
+.closed-trade-performance {
+    font-weight: bold;
+    text-align: right;
+}
+
+.closed-trade-performance.negative {
+    color: #f44336;
+}
+.closed-trade-performance.positive {
+    color: #28a745;
+}
+.text-right {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
+
+.closed-trade-prices {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: right;
+}
+
+.closed-trade-buy-price,
+.closed-trade-sell-price,
+.closed-trade-amount,
+.closed-trade-total-operation,
+.closed-trade-net-income {
+    font-size: 14px;
+}
+
+.buyColor{
+    color: #28a745;
+    margin-right: 12px;
+}
+.sellColor{
+    color: #b62525;
+    margin-right: 10px;
+}
+.dateColor{
+    color: aliceblue;
+    margin-right: 10px;
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .closed-trades-scroll-container {
+        max-height: 350px;
+    }
+
+    .closed-trades-title {
+        font-size: 20px;
+    }
+
+    .closed-trade-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .closed-trade-left,
+    .closed-trade-right {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .closed-trade-right {
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+
+    .closed-trade-prices,
+    .closed-trade-dates {
+        width: 100%;
+    }
+
+    .closed-trade-buy-price,
+    .closed-trade-sell-price,
+    .closed-trade-date-from,
+    .closed-trade-date-to {
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .closed-trades-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .closed-trades-scroll-container {
+        max-height: 300px;
+    }
+
+    .closed-trades-title {
+        font-size: 18px;
+    }
+
+    .closed-trade-dates,
+    .closed-trade-prices,
+    .closed-trade-amount,
+    .closed-trade-total-operation,
+    .closed-trade-net-income {
+        font-size: 13px;
+    }
+
+    .closed-trade-item {
+        padding: 12px 0;
+    }
+}

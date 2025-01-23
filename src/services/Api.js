@@ -40,16 +40,42 @@ export const getStatus = async () => {
 };
 
 
-export const getClosedOperations = () => {
-  return api.get('api/v1/public-closed-operations').then(response => response.data);
+export const getClosedOperations = async () => {
+  try {
+    const response = await api.get('api/v1/public-performance-operations');
+    return response.data.data; // Retorna directamente el array data
+  } catch (error) {
+    console.error('Error fetching close-operations:', error);
+    return [];
+  }
 };
 
-export const getCumulativePerformancePerMonth = () => {
-    return api.get('api/v1/cumulative-performance-per-month').then(response => response.data);
-  };
+export const getPrivateCloseOperations = async () => {
+  try {
+    const token = getToken();
+    const response = await api.get('api/v1/private-performance-operations', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data.data; // Retorna directamente el array data
+  } catch (error) {
+    console.error('Error fetching close-operations:', error);
+    return [];
+  }
+};
 
-export const getPerformancePerMonth = () => {
-  return api.get('api/v1/performance-per-month').then(response => response.data);
+
+export const getPerformancePerMonth = async () => {
+  try{
+    const response = await api.get('api/v1/public-performance-per-month');
+    const {data} = response.data;
+    return data;
+
+  } catch (error){
+    console.error('Error fetching performance per month:', error);
+    return 'Error fetching performance per month';
+  }
 };
 
 export const postLogin = async (email, password) => {

@@ -4,8 +4,5 @@
     object-fit:contain;
     background-color: rgb(0, 0, 0);
     margin-right: 0;
-    border-radius: 5vh; /* Ajusta este valor según cuán redondeado lo quieras */
-
+    border-radius: 5vh;
 }
-
-

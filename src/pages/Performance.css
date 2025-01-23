@@ -1,0 +1,18 @@
+.pnl{
+    min-height: 95vh
+}
+
+.closeTrades{
+    width: 85% !important;
+}
+ .cont{
+    text-align: center;
+ }
+
+ @media screen and (max-width: 580px) {
+
+    .closeTrades{
+        width: 100% !important;
+
+    }
+}

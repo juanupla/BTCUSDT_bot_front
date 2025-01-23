@@ -47,14 +47,14 @@
     color: #ffa52e !important;
   }
   
-  /* Tooltip */
+  /* tool tip */
   .recharts-tooltip-wrapper .recharts-default-tooltip {
     background-color: #1a1a1a !important;
     border: 1px solid #333 !important;
     color: #888888;
   }
   
-  /* Brush y su posición */
+  /* brush y su posición */
   .chart-container .recharts-brush {
     transform: translateY(35px) ;
   }
