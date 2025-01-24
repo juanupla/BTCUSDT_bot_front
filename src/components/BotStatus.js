@@ -8,7 +8,7 @@ const BotStatus = ({apiData}) => {
                 <div className='row'>
                     <img 
                         className='img12 col-12' 
-                        src='./botStatusOn.jpg' 
+                        src='./botStatusOn.png' 
                         alt='Bot Status'
                         onError={(e) => {
                             console.error('Error loading image:', e);
