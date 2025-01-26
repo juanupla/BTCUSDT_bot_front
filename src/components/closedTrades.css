@@ -83,6 +83,12 @@
 .closed-trade-performance.positive {
     color: #28a745;
 }
+.closed-trade-net-income.negative {
+    color: #f44336;
+}
+.closed-trade-net-income.positive {
+    color: #28a745;
+}
 .text-right {
     text-align: right;
 }
@@ -97,11 +103,22 @@
     text-align: right;
 }
 
+.closed-trade-net-income,
+.btc-descrip,
+.btc,
+.net-income,
+.closed-trade-total-operation,
+.closed-trade-dates{
+    font-weight: bold;
+}
+
 .closed-trade-buy-price,
 .closed-trade-sell-price,
 .closed-trade-amount,
 .closed-trade-total-operation,
-.closed-trade-net-income {
+.closed-trade-net-income,
+.net-result,
+.nominal-result {
     font-size: 14px;
 }
 
@@ -119,6 +136,27 @@
 
 }
 
+.btc-descrip{
+    color: #e2b63d;
+    margin-right: 10px;
+}
+.btc{
+    color: #e2b63d;
+}
+
+.net-result{
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.nominal-result{
+    color: white;
+    margin-right: 10px;
+}
+
+.net-income{
+    margin-right: 10px;
+}
 
 @media screen and (max-width: 768px) {
     .closed-trades-scroll-container {
@@ -153,8 +191,15 @@
     .closed-trade-buy-price,
     .closed-trade-sell-price,
     .closed-trade-date-from,
-    .closed-trade-date-to {
+    .closed-trade-date-to,
+    .closed-trade-amount,
+    .closed-trade-performance,
+    .closed-trade-net-income,
+    .closed-trade-total-operation {
         text-align: left;
+    }
+    .hr-result-separator{
+        display: none;        
     }
 }
 
@@ -183,4 +228,6 @@
     .closed-trade-item {
         padding: 12px 0;
     }
+
+   
 }

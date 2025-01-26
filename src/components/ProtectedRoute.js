@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { getToken } from '../services/Auth';
+import { getToken, removeToken } from '../services/Auth';
 import { jwtDecode } from 'jwt-decode';
 import Swal from 'sweetalert2'
 
@@ -45,6 +45,7 @@ const ProtectedRoute = ({ children }) => {
             showConfirmButton: false,
             timer: 2000
           });
+          removeToken();
           return <Navigate to="/login" replace />;
         }
       } catch (error) {

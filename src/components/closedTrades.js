@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getToken, removeToken } from '../services/Auth';
 import { jwtDecode } from 'jwt-decode';
 import { getClosedOperations, getPrivateCloseOperations } from '../services/Api';
+import Swal from 'sweetalert2'
 import './closedTrades.css'
 
 const ClosedTrades = () => {
@@ -22,6 +23,13 @@ const ClosedTrades = () => {
                     return true;
                 } else {
                     removeToken();
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "warning",
+                        title: "Su sesión ha caducado.",
+                        showConfirmButton: false,
+                        timer: 2000
+                      });
                     return false;
                 }
             } catch (error) {
@@ -57,7 +65,7 @@ const ClosedTrades = () => {
 
     return (
         <div className="closed-trades-container">
-            <h2 className="closed-trades-title text-center">Closed Trades</h2>
+            <h2 className="closed-trades-title text-center">Closed Transactions Summary</h2>
             <div className="closed-trades-scroll-container">
                 {closedTradesData.map((trade, index) => (
                     <div key={index} className="closed-trade-item">
@@ -72,13 +80,7 @@ const ClosedTrades = () => {
                                     {trade.sellOperation.date}
                                 </div>
                             </div>
-                            {isValidSession && (
-                                <>
-                                    <div className="closed-trade-amount">
-                                        {trade.sellOperation.amount} {trade.buyOperation.ticket}
-                                    </div>
-                                </>
-                            )}
+                            
                             
                         </div>
                         <div className="closed-trade-right">
@@ -92,20 +94,33 @@ const ClosedTrades = () => {
                                     <span className='sellColor'>SELL</span>
                                     ${trade.sellOperation.price.toFixed(2)}
                                 </div>
+                                <hr className='hr-result-separator'></hr>
+
+                                {isValidSession && (
+                                    <div className="closed-trade-amount">
+                                        <span className='btc-descrip'>Trade amount</span> 
+                                        {trade.sellOperation.amount} 
+                                        <span className='btc'> BTC</span>
+                                    </div>
+                            )}
                             </div>
                             <div className={`closed-trade-performance ${trade.netPerformance < 0 ? 'negative' : ''} text-right`}>
+                                <span className='net-result'> Net Result (%):</span> 
                                 {trade.netPerformance.toFixed(2)}%
                             </div>
+                            
                             {isValidSession && (
-                                <div className="closed-trade-total-operation">
-                                    ${trade.sellOperation.totalOperation.toFixed(2)}
-                                </div>
-                            )}
-                            {isValidSession && (
-                                <div className="closed-trade-net-income">
+                                <div className={`closed-trade-net-income ${trade.netPerformance < 0 ? 'negative' : ''} text-right` }>
+                                    <span className={'nominal-result '}>Nominal result:</span>
                                     ${trade.netIncome.toFixed(2)}
                                 </div>
                             )}
+                            {isValidSession && (
+                                <div className="closed-trade-total-operation">
+                                   <span className='net-income'>Net income: </span> ${trade.sellOperation.totalOperation.toFixed(2)}
+                                </div>
+                            )}
+                            
                         </div>
                     </div>
                 ))}
