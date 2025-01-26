@@ -22,14 +22,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               
               {/* Ruta protegida para Operations */}
-              <Route 
-                path="/performance" 
-                element={
-                  
-                    <Performance/>
-                  
-                } 
-              />
+              <Route path="/performance" element={<Performance/>} />
             </Routes>
           </div>
         </div>

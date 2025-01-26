@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ClosedTrades from '../components/closedTrades';
+import PerformancePerMonth from '../components/performancePerMonth';
 import './Performance.css'
 
 
@@ -32,8 +33,8 @@ const Performance = () => {
         <div className='col-12 closeTrades'>
           <ClosedTrades/>
         </div>
-        <div className="col-12 ">
-
+        <div className="col-12 closeTrades">
+          <PerformancePerMonth></PerformancePerMonth>
         </div>
       </div>
     </div>

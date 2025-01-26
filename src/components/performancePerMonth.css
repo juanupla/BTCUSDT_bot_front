@@ -1,0 +1,60 @@
+.bg-gray-900 {
+    background-color: #1a1a1a;
+  }
+  
+  .p-8 {
+    padding: 1rem;
+  }
+  
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .recharts-cartesian-axis-tick-value {
+    fill: #cbd5e0;
+    font-size: 12px;
+  }
+  
+  .recharts-legend-item-text {
+    color: #fff;
+    font-size: 0.875rem;
+  }
+  
+  .recharts-cartesian-axis-tick-line,
+  .recharts-cartesian-grid-line {
+    stroke: #4a5568;
+  }
+  
+  .recharts-tooltip-wrapper {
+    background-color: #000000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+  }
+  
+  .recharts-tooltip-item-name,
+  .recharts-tooltip-item-value {
+    font-size: 0.875rem;
+  }
+.container-fluid{
+    width: 100%;
+    margin: auto;
+}
+.recharts-legend-wrapper{
+    width: auto !important;
+}
+
+.monthly-performance-title{
+    font-size: 24px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+}

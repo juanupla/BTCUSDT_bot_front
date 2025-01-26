@@ -5,9 +5,9 @@
 .closeTrades{
     width: 85% !important;
 }
- .cont{
+.cont{
     text-align: center;
- }
+}
 
  @media screen and (max-width: 580px) {
 

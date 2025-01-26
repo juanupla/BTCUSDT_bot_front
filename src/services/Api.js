@@ -69,14 +69,29 @@ export const getPrivateCloseOperations = async () => {
 export const getPerformancePerMonth = async () => {
   try{
     const response = await api.get('api/v1/public-performance-per-month');
-    const {data} = response.data;
-    return data;
+    return response.data.data;
 
   } catch (error){
     console.error('Error fetching performance per month:', error);
     return 'Error fetching performance per month';
   }
 };
+
+export const getPrivatePerformancePerMonth = async () =>{
+  try{
+    const token = getToken();
+    const response = await api.get('api/v1/private-performance-per-month',{
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data.data;
+
+  } catch (error){
+    console.error('Error fetching performance per month:', error);
+    return 'Error fetching performance per month';
+  }
+}
 
 export const postLogin = async (email, password) => {
   try {
