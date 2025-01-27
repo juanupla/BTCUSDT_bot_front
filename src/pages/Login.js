@@ -19,7 +19,7 @@ const Login = () => {
         navigate('/dashboard');
       }
     } catch (err) {
-      setError('Error en el login. Verifica tus credenciales.');
+      setError('Error al ingrear. Verifica tus credenciales.');
     }
   };
 

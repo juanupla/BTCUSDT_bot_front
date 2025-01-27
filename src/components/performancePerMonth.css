@@ -1,60 +1,78 @@
-.bg-gray-900 {
-    background-color: #1a1a1a;
-  }
-  
-  .p-8 {
+.chart-container {
+  width: 100%;
+  margin: 0 auto;
+  background-color: #1a1a1a;
+}
+
+.monthly-performance-title {
+  font-size: 24px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+  padding: 0 16px;
+}
+
+.recharts-legend-item-text {
+  color: #fff !important;
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #4a5568;
+}
+
+/* Custom Tooltip Styles */
+.custom-tooltip {
+  background-color: #1a1a1a !important;
+  border: 1px solid #4a5568;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.tooltip-label {
+  color: #fff;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.tooltip-entry {
+  margin: 2px 0;
+  font-size: 14px;
+}
+
+.recharts-tooltip-cursor {
+  fill: #1a1a1a !important;
+}
+
+/* Custom Legend Styles */
+.custom-legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+.legend-color {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .chart-container {
     padding: 1rem;
   }
   
-  .rounded-lg {
-    border-radius: 0.5rem;
+  .monthly-performance-title {
+    font-size: 20px;
   }
-  
-  .flex {
-    display: flex;
-  }
-  
-  .justify-center {
-    justify-content: center;
-  }
-  
-  .recharts-cartesian-axis-tick-value {
-    fill: #cbd5e0;
-    font-size: 12px;
-  }
-  
-  .recharts-legend-item-text {
-    color: #fff;
-    font-size: 0.875rem;
-  }
-  
-  .recharts-cartesian-axis-tick-line,
-  .recharts-cartesian-grid-line {
-    stroke: #4a5568;
-  }
-  
-  .recharts-tooltip-wrapper {
-    background-color: #000000;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
-  }
-  
-  .recharts-tooltip-item-name,
-  .recharts-tooltip-item-value {
-    font-size: 0.875rem;
-  }
-.container-fluid{
-    width: 100%;
-    margin: auto;
-}
-.recharts-legend-wrapper{
-    width: auto !important;
-}
-
-.monthly-performance-title{
-    font-size: 24px;
-    text-align: center;
-    color: #fff;
-    margin-bottom: 20px;
 }

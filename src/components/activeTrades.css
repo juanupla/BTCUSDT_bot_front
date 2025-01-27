@@ -19,6 +19,8 @@
     /* scroll dark */
     scrollbar-width: thin;
     scrollbar-color: #333 #1a1a1a;
+
+    padding-right: 10px;
 }
 
 /* ancho el scrollbar  */
@@ -80,6 +82,25 @@
     font-size: 16px;
     text-align: right;
 }
+
+.btc-descrip{
+    font-size: 14px;
+    font-weight: bold;
+    color: #e2b63d;
+    margin-right: 10px;
+}
+.btc{
+    color: #e2b63d;
+}
+
+.net-income{
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 5px; 
+}
+
+
 
 @media screen and (max-width: 768px) {
     .trades-scroll-container {

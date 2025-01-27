@@ -27,6 +27,20 @@ export const getOperations = async () => {
     .then(response => response.data);
 };
 
+export const getPrivateOperations = async () => {
+  const token = getToken();
+  const now = new Date().toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" });
+  const currentDate = new Date(now).toISOString(); // convierte a formato ISO - requerida por la ap
+  const oneYearAgo = new Date(new Date(now).setFullYear(new Date(now).getFullYear() - 1)).toISOString();
+  return api
+    .get(`api/v1/private-historical-operations?start=${oneYearAgo}&end=${currentDate}`,{
+      headers:{
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(response => response.data.data);
+};
+
 
 export const getStatus = async () => {
   try {
@@ -54,11 +68,11 @@ export const getPrivateCloseOperations = async () => {
   try {
     const token = getToken();
     const response = await api.get('api/v1/private-performance-operations', {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-    return response.data.data; // Retorna directamente el array data
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+    return response.data.data; 
   } catch (error) {
     console.error('Error fetching close-operations:', error);
     return [];

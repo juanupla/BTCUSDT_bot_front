@@ -9,6 +9,7 @@ const ClosedTrades = () => {
     const [loading, setLoading] = useState(true);
     const [isValidSession, setIsValidSession] = useState(false);
     const [closedTradesData, setClosedTradesData] = useState([]);
+    
     const [error, setError] = useState(null);
 
 
