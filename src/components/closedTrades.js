@@ -105,20 +105,20 @@ const ClosedTrades = () => {
                                     </div>
                             )}
                             </div>
-                            <div className={`closed-trade-performance ${trade.netPerformance < 0 ? 'negative' : ''} text-right`}>
+                            <div className={`closed-trade-performance ${trade.netPerformance < 0 ? 'negative' : 'positive'} text-right`}>
                                 <span className='net-result'> Net Result (%):</span> 
                                 {trade.netPerformance.toFixed(2)}%
                             </div>
                             
                             {isValidSession && (
-                                <div className={`closed-trade-net-income ${trade.netPerformance < 0 ? 'negative' : ''} text-right` }>
+                                <div className={`closed-trade-net-income ${trade.netPerformance < 0 ? 'negative' : 'positive'} text-right` }>
                                     <span className={'nominal-result '}>Nominal result:</span>
                                     ${trade.netIncome.toFixed(2)}
                                 </div>
                             )}
                             {isValidSession && (
                                 <div className="closed-trade-total-operation">
-                                   <span className='net-income'>Net income: </span> ${trade.sellOperation.totalOperation.toFixed(2)}
+                                   <span className='nominal-result'>Net income: </span> ${trade.sellOperation.totalOperation.toFixed(2)}
                                 </div>
                             )}
                             

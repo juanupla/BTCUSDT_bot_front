@@ -5,6 +5,7 @@
     width: 100%;
     margin: 2vh auto 3vh auto;
     border-radius: 20px;
+
 }
 
 .closed-trades-title {
@@ -17,6 +18,7 @@
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #333 #1a1a1a;
+    padding-right: 10px;
 }
 
 .closed-trades-scroll-container::-webkit-scrollbar {
@@ -42,7 +44,7 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 15px 0;
-    border-bottom: 1px solid #333;
+    border-bottom: 4px solid #333;
 }
 
 .closed-trade-left {
@@ -155,7 +157,6 @@
 }
 
 .net-income{
-    margin-right: 10px;
 }
 
 @media screen and (max-width: 768px) {
