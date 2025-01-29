@@ -7,6 +7,7 @@ import Performance from './pages/Performance';
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ControlPanel from './pages/controlPanel';
 
 const App = () => {
   return (
@@ -20,9 +21,8 @@ const App = () => {
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/login" element={<Login />} />
-              
-              {/* Ruta protegida para Operations */}
               <Route path="/performance" element={<Performance/>} />
+              <Route path="/control-panel" element={<ControlPanel/>} />
             </Routes>
           </div>
         </div>

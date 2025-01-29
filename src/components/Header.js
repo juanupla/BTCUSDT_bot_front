@@ -37,6 +37,9 @@ const Header = () => {
           <li className="nav-item" onClick={toggleMenu}>
             <Link className="nav-link" to="/login">Login</Link>
           </li>
+          <li className="nav-item" onClick={toggleMenu}>
+            <Link className="nav-link" to="/control-panel">Control Panel</Link>
+          </li>
           
         </ul>
       </div>

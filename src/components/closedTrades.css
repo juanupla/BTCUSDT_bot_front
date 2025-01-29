@@ -14,7 +14,7 @@
 }
 
 .closed-trades-scroll-container {
-    max-height: 400px;
+    max-height: 500px;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #333 #1a1a1a;

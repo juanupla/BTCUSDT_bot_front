@@ -62,6 +62,7 @@ const ActiveTrades = () => {
   
       fetchTrades();
     }, []);
+
   
     return (
       <div className="trades-container">
@@ -80,9 +81,6 @@ const ActiveTrades = () => {
 
                 Price: ${Number(trade.price).toFixed(2)}
 
-                {isValidSession && (
-                  <hr></hr>
-                )}
                 {isValidSession && (
                 <div>
                   <span className='btc-descrip'>Trade amount</span> 
