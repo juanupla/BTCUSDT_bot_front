@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getOperations, getPrivateOperations } from '../services/Api';
+import { getPublicOperations, getPrivateOperations } from '../services/Api';
 import { getToken,removeToken } from '../services/Auth';
 import { jwtDecode } from 'jwt-decode';
 import Swal from 'sweetalert2'
@@ -39,22 +39,20 @@ const ActiveTrades = () => {
       };
       const fetchTrades = async () => {
         try {
-          const response = await getOperations();
-          if (response.status === "OK") {
-            setTrades(response.data);
-          }
-
            const validSession = checkAuth();
            setIsValidSession(validSession);
           
            if (validSession) {
                const privateClosedTrades = await getPrivateOperations();
-               setTrades(privateClosedTrades);
+               if (privateClosedTrades.status === "OK") {
+                setTrades(privateClosedTrades.data);
+              }
            } else {
-               const getOperations = await getOperations();
-               setTrades(getOperations);
+               const publicOperations = await getPublicOperations();
+               if (publicOperations.status === "OK") {
+                setTrades(publicOperations.data);
+              }
            }
-           setLoading(false);             
         } catch (error) {
           console.error('Error fetching trades:', error);
         }
