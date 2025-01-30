@@ -18,13 +18,13 @@ export const getEMAs = async () => {
 };
 
 
-export const getPublicOperations = async () => {
+export const getOperations = async () => {
   const now = new Date().toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" });
   const currentDate = new Date(now).toISOString(); // convierte a formato ISO - requerida por la ap
   const oneYearAgo = new Date(new Date(now).setFullYear(new Date(now).getFullYear() - 1)).toISOString();
   return api
     .get(`api/v1/public-historical-operations?start=${oneYearAgo}&end=${currentDate}`)
-    .then(response => response.data);
+    .then(response => response.data.data);
 };
 
 export const getPrivateOperations = async () => {
