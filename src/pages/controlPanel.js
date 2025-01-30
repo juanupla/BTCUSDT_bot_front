@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import './controlPanel.css';
+import CreateUserModal from '../components/createUserModal';
+
 
 const ControlPanel = () => {
   const [activeTab, setActiveTab] = useState('bot');
   const [botStatus, setBotStatus] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleUserCreated = (newUser) => {
+    
+  };
 
   return (
     <div className="container-fluid p-0">
@@ -74,9 +81,14 @@ const ControlPanel = () => {
                   <div className="card bg-dark">
                     <div className="card-body">
                       <h2 className="card-title">User management</h2>
-                      <button className="btn btn-warning mb-3">
-                        Crear Nuevo Usuario
+                      <button className="btn btn-warning mb-3" onClick={() => setShowModal(true)}>
+                        Create a new user
                       </button>
+                      <CreateUserModal 
+                        show={showModal} 
+                        onClose={() => setShowModal(false)}
+                        onUserCreated={handleUserCreated}
+                      />
                       <div className="table-responsive">
                         <table className="table table-dark table-hover">
                           <thead>
@@ -144,7 +156,7 @@ const ControlPanel = () => {
                       </div>
 
                       <div className="mb-4">
-                        <h3 className='LSTWP'>Last sale transactions without performance</h3>
+                        <h3 className='LSTWP'>Latest sales transactions without performance</h3>
                         <div className="table-responsive">
                           <table className="table table-dark table-hover">
                             <thead>

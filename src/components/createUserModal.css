@@ -1,0 +1,11 @@
+.modal-dialog {
+    z-index: 1000;
+  }
+  
+  .modal-backdrop {
+    z-index: 999;
+  }
+
+  .inp:focus{
+    border-color: yellow !important;
+  }

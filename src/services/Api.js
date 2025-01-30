@@ -119,3 +119,17 @@ export const postLogin = async (email, password) => {
     throw error;
   }
 };
+
+export const createUser = async (userData) => {
+  try {
+    const token = getToken();
+    const response = await api.post('api/auth/signin', userData,{
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
