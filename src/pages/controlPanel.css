@@ -94,6 +94,30 @@
   }
 
   .Status{
-    font-size: 20px;
+    font-size:28px;
+    margin: left;
+  }
+
+  .Status-on{
+    color: green;
+  }
+  .Status-off{
+    color: rgb(182, 3, 3);
+  }
+
+  .Status-on,
+  .Status-off{
+    background-color: #000;
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 10px;
+  }
+
+  .status-tittle{
+    font-size:28px;
     color: #585454;
+    margin: left;
+    padding-left: 4px;
+
   }

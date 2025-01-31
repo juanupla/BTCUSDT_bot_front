@@ -94,7 +94,7 @@ const CreateUserModal = ({ show, onClose, onUserCreated }) => {
               Cancel
             </button>
             <button type="button" className="btn btn-warning" onClick={() => handleSubmit(formData)}>
-              Crate
+              Create
             </button>
           </div>
         </div>

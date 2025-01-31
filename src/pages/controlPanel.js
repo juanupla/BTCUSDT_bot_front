@@ -1,16 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './controlPanel.css';
 import CreateUserModal from '../components/createUserModal';
+import { getStatus } from '../services/Api';
+
 
 
 const ControlPanel = () => {
   const [activeTab, setActiveTab] = useState('bot');
+
   const [botStatus, setBotStatus] = useState(false);
+
   const [showModal, setShowModal] = useState(false);
+  const [users, setUsers] = useState([
+    { email: "admin@juanupla.com", name: "Juan", lastName: "Cremona", role: "Administrador" }
+  ]);
 
   const handleUserCreated = (newUser) => {
-    
+    setUsers([...users, newUser]);
+    setShowModal(false); //cerrar modal despues de agregar el usuario
   };
+
+  useEffect(()=>{
+
+    const fetchData = async () => {
+       try {
+              const status = await getStatus();
+              setBotStatus(status);
+              
+            } catch (error) {
+              console.error('Error al cargar los datos:', error);
+            }
+    }
+    fetchData();
+
+  }, []);
 
   return (
     <div className="container-fluid p-0">
@@ -62,13 +85,16 @@ const ControlPanel = () => {
                   <div className="card bg-dark">
                     <div className="card-body">
                       <h2 className="card-title">Bot control</h2>
+                      <h3 className='status-tittle'>Status</h3>
                       <div className="d-flex justify-content-between align-items-center">
-                        <span className='Status'>Estado: {botStatus ? 'Activo' : 'Detenido'}</span>
+                        <span className='Status'>{botStatus ? <div className='Status-on'>ON</div> : <div className='Status-off'>OFF</div>}</span>
                         <button
                           className={`btn ${botStatus ? 'btn-danger' : 'btn-warning'}`}
-                          onClick={() => setBotStatus(!botStatus)}
+//------------------------Esto de abajo tiene que ser uan funcion. consultar is estaseguro y pega al endpoint. si es todo correcto 
+//                        setBotStatus(!botStatus), sino no. y se muestra sweetalert
+                          onClick={() => setBotStatus(!botStatus)} 
                         >
-                          {botStatus ? 'Detener Bot' : 'Iniciar Bot'}
+                          {botStatus ? 'Stop Bot' : 'Start Bot'}
                         </button>
                       </div>
                     </div>
@@ -101,15 +127,17 @@ const ControlPanel = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>admin@juanupla.com</td>
-                              <td>Juan</td>
-                              <td>Cremona</td>
-                              <td>Administrador</td>
-                              <td>
-                                <button className="btn btn-danger btn-sm">Eliminar</button>
-                              </td>
-                            </tr>
+                            {users.map((user, index) => (
+                              <tr key={index}>
+                                <td>{user.email}</td>
+                                <td>{user.name}</td>
+                                <td>{user.lastName}</td>
+                                <td>{user.role}</td>
+                                <td>
+                                  <button className="btn btn-danger btn-sm">Eliminar</button>
+                                </td>
+                              </tr>
+                            ))}
                           </tbody>
                         </table>
                       </div>
