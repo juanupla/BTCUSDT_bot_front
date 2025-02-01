@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ControlPanel from './pages/controlPanel';
+import './App.css'
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
       <Header/>
       <div className="container-fluid bg-black">
         <div className="row">
-          <div className="col-lg-12 col-md-12 col-sm-12">
+          <div className="col-12 AppCont">
             <Routes>
               {/* Rutas públicas */}
               <Route path="/" element={<Navigate to="/dashboard" replace />} />

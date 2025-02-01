@@ -27,7 +27,7 @@ const ClosedTrades = () => {
                     Swal.fire({
                         position: "top-end",
                         icon: "warning",
-                        title: "Su sesión ha caducado.",
+                        title: "Your session has expired",
                         showConfirmButton: false,
                         timer: 2000
                       });
