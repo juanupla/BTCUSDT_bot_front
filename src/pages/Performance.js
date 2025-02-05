@@ -30,11 +30,12 @@ const Performance = () => {
   return (
     <div className='container-fluid pnl'>
       <div className="row cont">
-        <div className='col-12 closeTrades'>
-          <ClosedTrades/>
-        </div>
-        <div className="col-12 closeTrades mb-5">
+        
+        <div className="col-12 closeTrades mt-4">
           <PerformancePerMonth></PerformancePerMonth>
+        </div>
+        <div className='col-12 closeTrades mt-4'>
+          <ClosedTrades/>
         </div>
       </div>
     </div>

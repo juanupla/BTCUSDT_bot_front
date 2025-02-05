@@ -3,7 +3,7 @@ import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Bar, Responsive
 import { getPerformancePerMonth, getPrivatePerformancePerMonth } from '../services/Api';
 import { getToken } from '../services/Auth';
 import { jwtDecode } from 'jwt-decode';
-import './performancePerMonth.css';
+import './performancePerMonth.css'
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload) return null;
@@ -22,7 +22,7 @@ const CustomTooltip = ({ active, payload, label }) => {
           style={{ 
             color: pld.name === 'Performance' 
               ? getPerformanceColor(pld.value)
-              : pld.color 
+              : getNetIncomeColor(pld.value)
           }}
         >
           {pld.name}: {
@@ -37,7 +37,11 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 const getBarColor = (value) => {
-  return value >= 0 ? '#28a745' : '#dc3545';
+  return value >= 0 ? 'rgba(40, 167, 69, 0.5)' : 'rgba(220, 53, 70, 0.56)';
+};
+
+const getNetIncomeColor = (value) => {
+  return 'rgba(53, 159, 220, 0.5)';
 };
 
 const PerformancePerMonth = () => {
@@ -84,25 +88,34 @@ const PerformancePerMonth = () => {
     netIncome: isValidSession ? item.netIncome : undefined
   }));
 
-  //custom Legend para el Performance
   const CustomizedLegend = (props) => {
     const { payload } = props;
     
     return (
       <div className="custom-legend">
         {payload.map((entry, index) => {
-          // en la entrada de Performance, usamos el ultimo valor de performance para determinar el color
-          const color = entry.value === 'Performance'
-            ? getBarColor(resultData[resultData.length - 1]?.performance || 0)
-            : entry.color;
+          let color;
+          const lastDataPoint = resultData[resultData.length - 1];
+          
+          if (entry.value === 'Performance') {
+            color = getBarColor(lastDataPoint?.performance || 0);
+          } else if (entry.value === 'Net Income') {
+            color = getNetIncomeColor(lastDataPoint?.netIncome || 0);
+          }
             
           return (
             <span 
               key={`item-${index}`} 
               className="legend-item"
-              style={{ color: color }}
+              style={{ color: '#fff' }}
             >
-              <span className="legend-color" style={{ backgroundColor: color }}></span>
+              <span 
+                className="legend-color" 
+                style={{ 
+                  backgroundColor: color,
+                  opacity: 1
+                }}
+              ></span>
               {entry.value}
             </span>
           );
@@ -147,12 +160,12 @@ const PerformancePerMonth = () => {
               textAnchor="end"
               height={60}
               interval={0}
-              tick={{ fill: '#cbd5e0' }}
+              tick={{ fill: '#b0b3b8' }}
             />
-            <YAxis tick={{ fill: '#cbd5e0' }} />
+            <YAxis tick={{ fill: '#b0b3b8' }} />
             <Tooltip 
               content={<CustomTooltip />}
-              cursor={{ fill: '#1a1a1a' }}
+              cursor={{ fill: '#333' }}
             />
             <Legend content={<CustomizedLegend />} />
             <Bar dataKey="performance" name="Performance">
@@ -164,7 +177,14 @@ const PerformancePerMonth = () => {
               ))}
             </Bar>
             {isValidSession && (
-              <Bar dataKey="netIncome" fill="#ff7300" name="Net Income" />
+              <Bar dataKey="netIncome" name="Net Income">
+                {resultData.map((entry, index) => (
+                  <Cell 
+                    key={`cell-netIncome-${index}`}
+                    fill={getNetIncomeColor(entry.netIncome)}
+                  />
+                ))}
+              </Bar>
             )}
           </BarChart>
         </ResponsiveContainer>
