@@ -34,7 +34,7 @@ const Performance = () => {
         <div className="col-12 closeTrades mt-4">
           <PerformancePerMonth></PerformancePerMonth>
         </div>
-        <div className='col-12 closeTrades mt-4'>
+        <div className='col-12 closeTrades mt-2'>
           <ClosedTrades/>
         </div>
       </div>

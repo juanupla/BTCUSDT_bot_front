@@ -133,3 +133,65 @@ export const createUser = async (userData) => {
     throw error;
   }
 };
+
+export const getUsers = async () =>{
+  try{
+    const token = getToken();
+    const response = await api.get('/api/auth/users',{
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data.data;
+
+  } catch (error){
+    console.error('Error fetching users:', error);
+    return 'Error fetching users';
+  }
+}
+
+export const deletUser = async (data) => {
+  try {
+    const token = getToken();
+    const response = await api.delete('api/auth/delete', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      data: data  
+    });
+    return response; 
+  } catch (error) {
+    console.error('Error al eliminar usuario:', error);
+    throw error;
+  }
+};
+
+export const stopBot = async () =>{
+  try {
+    const token = getToken();
+    const response = await api.get('api/v1/stop-bot', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }    
+    });
+    return response; 
+  } catch (error) {
+    console.error('Error al eliminar usuario:', error);
+    throw error;
+  }
+}
+
+export const startBot = async () =>{
+  try {
+    const token = getToken();
+    const response = await api.get('api/v1/start-bot', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }    
+    });
+    return response; 
+  } catch (error) {
+    console.error('Error al eliminar usuario:', error);
+    throw error;
+  }
+}

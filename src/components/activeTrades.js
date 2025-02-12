@@ -76,8 +76,10 @@ const ActiveTrades = () => {
                 </div>
               </div>
               <div className="trade-price">
-
-                Price: ${Number(trade.price).toFixed(2)}
+                <span className='trade-price-span'>
+                    Price: 
+                </span>
+                ${Number(trade.price).toFixed(2)}
 
                 {isValidSession && (
                 <div>
@@ -85,14 +87,14 @@ const ActiveTrades = () => {
                   {trade.amount} 
                   <span className='btc'> BTC</span>
                 </div>
-              )}
-              {isValidSession && (
-                <div className='net-income'>
-                  <span> Net Income </span>  ${Number(trade.totalOperation).toFixed(2)}
+                )}
+                {isValidSession && (
+                  <div className='net-income'>
+                  <span className='net-income-span'> Net Income </span>  
+                  ${Number(trade.totalOperation).toFixed(2)}
                 </div>
-              )}
+                )}
               </div>
-
             </div>
           ))}
         </div>

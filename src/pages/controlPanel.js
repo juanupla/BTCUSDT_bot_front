@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './controlPanel.css';
 import CreateUserModal from '../components/createUserModal';
-import { getStatus } from '../services/Api';
+import { getStatus, getUsers, deletUser, stopBot, startBot } from '../services/Api';
+import Swal from 'sweetalert2'
+
 
 
 
@@ -11,28 +13,130 @@ const ControlPanel = () => {
   const [botStatus, setBotStatus] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
-  const [users, setUsers] = useState([
-    { email: "admin@juanupla.com", name: "Juan", lastName: "Cremona", role: "Administrador" }
-  ]);
+  const [users, setUsers] = useState([]);
 
-  const handleUserCreated = (newUser) => {
-    setUsers([...users, newUser]);
-    setShowModal(false); //cerrar modal despues de agregar el usuario
+  const handleUserCreated = async (newUser) => {
+    try {
+      const updatedUsers = await getUsers();
+      setUsers(updatedUsers);
+      setShowModal(false);
+    } catch (error) {
+      console.error('Error updating users list:', error);
+    }
   };
 
-  useEffect(()=>{
+  const handleStatusControl = async () =>{
+    Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, change status!"
+    }).then( async (result) => {
+      if (result.isConfirmed) {
+        if(botStatus===true){
+          const sendOrder = await stopBot();
+          if(sendOrder.status === 200){
+            setBotStatus(!botStatus)
+            Swal.fire({
+              title: "Success!",
+              text: "Status changed.",
+              icon: "success"
+            });
+          }
+          else{
+            Swal.fire({
+              title: "Error",
+              text: "",
+              icon: "error"
+            });
+          }
+        }
+        else{
+          const sendOrder = await startBot();
+          if(sendOrder.status === 200){
+            setBotStatus(!botStatus)
+            Swal.fire({
+              title: "Success!",
+              text: "Status changed.",
+              icon: "success"
+            });
+          }
+          else{
+            Swal.fire({
+              title: "Error",
+              text: "",
+              icon: "error"
+            });
+          }
+        }
+      }
+    });
+  }
+  const handleDeleteUser = async (email) => {
+    try {
+      const data = {
+        email : email
+      }
+      const response = await deletUser(data);
+      if (response.status === 200) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Usuario eliminado",
+          showConfirmButton: false,
+          timer: 2000
+        });
 
-    const fetchData = async () => {
-       try {
-              const status = await getStatus();
-              setBotStatus(status);
-              
-            } catch (error) {
-              console.error('Error al cargar los datos:', error);
-            }
+        const updatedUsers = await getUsers();
+        setUsers(updatedUsers);
+      } else if (response.status === 404) {
+        Swal.fire({
+          position: "top-end",
+          icon: "warning",
+          title: "Usuario no encontrado",
+          showConfirmButton: false,
+          timer: 2000
+        });
+      } else {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "No se eliminó el usuario",
+          showConfirmButton: false,
+          timer: 2000
+        });
+      }
+    } catch (error) {
+      console.error('Error al eliminar usuario:', error);
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "No se eliminó el usuario",
+        showConfirmButton: false,
+        timer: 2000
+      });
     }
-    fetchData();
+  };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const status = await getStatus();
+        setBotStatus(status);
+      } catch (error) {
+        console.error('Error al cargar los datos:', error);
+      }
+      
+      try {
+        const users = await getUsers();
+        setUsers(users);
+      } catch (error) {
+        console.error('Error al cargar los datos:', error);
+      }
+    };
+    fetchData();
   }, []);
 
   return (
@@ -92,7 +196,7 @@ const ControlPanel = () => {
                           className={`btn ${botStatus ? 'btn-danger' : 'btn-warning'}`}
 //------------------------Esto de abajo tiene que ser uan funcion. consultar is estaseguro y pega al endpoint. si es todo correcto 
 //                        setBotStatus(!botStatus), sino no. y se muestra sweetalert
-                          onClick={() => setBotStatus(!botStatus)} 
+                          onClick={() => handleStatusControl()} 
                         >
                           {botStatus ? 'Stop Bot' : 'Start Bot'}
                         </button>
@@ -119,22 +223,25 @@ const ControlPanel = () => {
                         <table className="table table-dark table-hover">
                           <thead>
                             <tr>
-                              <th>Email</th>
                               <th>Name</th>
                               <th>LastName</th>
-                              <th>Rol</th>
+                              <th>Email</th>
                               <th>Acciones</th>
                             </tr>
                           </thead>
                           <tbody>
                             {users.map((user, index) => (
                               <tr key={index}>
-                                <td>{user.email}</td>
                                 <td>{user.name}</td>
                                 <td>{user.lastName}</td>
-                                <td>{user.role}</td>
+                                <td>{user.email}</td>
                                 <td>
-                                  <button className="btn btn-danger btn-sm">Eliminar</button>
+                                  <button 
+                                    className="btn btn-danger btn-sm" 
+                                    onClick={() => handleDeleteUser(user.email)}
+                                  >
+                                    Eliminar
+                                  </button>
                                 </td>
                               </tr>
                             ))}

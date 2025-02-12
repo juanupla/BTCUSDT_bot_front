@@ -44,7 +44,7 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 15px 0;
-    border-bottom: 4px solid #333;
+    border-bottom: 2.5px solid #333;
 }
 
 .closed-trade-left {
@@ -75,7 +75,6 @@
 }
 
 .closed-trade-performance {
-    font-weight: bold;
     text-align: right;
 }
 
@@ -105,11 +104,8 @@
     text-align: right;
 }
 
-.closed-trade-net-income,
 .btc-descrip,
 .btc,
-.net-income,
-.closed-trade-total-operation,
 .closed-trade-dates{
     font-weight: bold;
 }
@@ -156,7 +152,8 @@
     margin-right: 10px;
 }
 
-.net-income{
+.net-income-span{
+    margin-right: 39px;
 }
 
 @media screen and (max-width: 768px) {

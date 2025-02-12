@@ -37,7 +37,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 const getBarColor = (value) => {
-  return value >= 0 ? 'rgba(40, 167, 69, 0.5)' : 'rgba(220, 53, 70, 0.56)';
+  return value >= 0 ? 'rgba(40, 167, 70, 0.56)' : 'rgba(220, 53, 70, 0.56)';
 };
 
 const getNetIncomeColor = (value) => {

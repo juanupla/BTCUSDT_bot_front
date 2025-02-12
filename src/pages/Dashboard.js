@@ -62,14 +62,14 @@ const Dashboard = () => {
         </div>
         <hr className='hr'></hr>
         <div className="col-12 ema">
-          <h3 className='emasTittle'>Exponential moving averages - [1h]</h3>
+          <h3 className='emasTittle'>Exponential moving averages [1h]</h3>
            {emasData.length > 0 ? (
            <Chart apiData={emasData} /> 
            ) : (
           <p>No hay datos disponibles para mostrar.</p>
           )}
         </div>
-        <div className='col-12 activeTrades'>
+        <div className='col-12 activeTrades mt-2'>
           <ActiveTrades />  
         </div>
       </div>
