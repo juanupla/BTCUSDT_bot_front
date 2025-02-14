@@ -1,5 +1,5 @@
 .panel{
-    background-color: rgb(0, 0, 0);
+    background: linear-gradient(to bottom, #000000, #1a1a1a, #0f1a2b);
 }
 .status{
     padding-top: 1%;
@@ -9,7 +9,7 @@
 
 .ema{
     width: 85% !important;
-    background-color: rgb(0, 0, 0);
+    background: transparent;
     text-align: center;
 }
 
@@ -34,7 +34,7 @@
 
 .activeTrades{
     width: 85% !important;
-    background-color: rgb(0, 0, 0);
+    background: transparent;
     text-align: center;
 }
 

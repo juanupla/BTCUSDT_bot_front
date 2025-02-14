@@ -1,9 +1,9 @@
 .chart-container {
     width: auto;
     height: 60vh;
-    background-color: #1a1a1a;
+    background-color: #13101080;
     padding: 12px;
-    border-radius: 20px;
+    border-radius: 30px;
     margin-bottom: 20px;
     position: relative;
   }

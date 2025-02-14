@@ -55,7 +55,6 @@ const Dashboard = () => {
 
   return (
     <div className='container-fluid panel'>
-      <h2 className='status'>Status</h2>
       <div className="row cont">
         <div className='col-12'>
           <BotStatus apiData={botStatus}></BotStatus>

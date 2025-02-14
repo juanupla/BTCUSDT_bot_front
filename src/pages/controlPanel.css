@@ -1,6 +1,6 @@
 .admin-panel-container {
     min-height: 100vh;
-    background-color: #000;
+    background: linear-gradient(to bottom, #000000, #1a1a1a, #0f1a2b);
     color: white;
     padding: 20px;
   }

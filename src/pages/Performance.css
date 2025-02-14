@@ -4,9 +4,12 @@
 
 .closeTrades{
     width: 85% !important;
+    background: transparent;
 }
 .cont{
     text-align: center;
+    background: linear-gradient(to bottom, #000000, #1a1a1a, #0f1a2b);
+
 }
 
  @media screen and (max-width: 580px) {

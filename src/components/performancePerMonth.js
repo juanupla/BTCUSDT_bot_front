@@ -3,7 +3,7 @@ import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Bar, Responsive
 import { getPerformancePerMonth, getPrivatePerformancePerMonth } from '../services/Api';
 import { getToken } from '../services/Auth';
 import { jwtDecode } from 'jwt-decode';
-import './performancePerMonth.css'
+import './performancePerMonth.css';
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload) return null;
@@ -48,6 +48,8 @@ const PerformancePerMonth = () => {
   const [loading, setLoading] = useState(true);
   const [isValidSession, setIsValidSession] = useState(false);
   const [data, setData] = useState([]);
+  const [visibleMonths, setVisibleMonths] = useState(6);
+  const [startIndex, setStartIndex] = useState(0);
 
   useEffect(() => {
     const checkAuth = () => {
@@ -88,6 +90,21 @@ const PerformancePerMonth = () => {
     netIncome: isValidSession ? item.netIncome : undefined
   }));
 
+  // Slice the data to show only visible months
+  const visibleData = resultData.slice(startIndex, startIndex + visibleMonths);
+
+  const handleNext = () => {
+    if (startIndex + visibleMonths < resultData.length) {
+      setStartIndex(startIndex + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (startIndex > 0) {
+      setStartIndex(startIndex - 1);
+    }
+  };
+
   const CustomizedLegend = (props) => {
     const { payload } = props;
     
@@ -95,7 +112,7 @@ const PerformancePerMonth = () => {
       <div className="custom-legend">
         {payload.map((entry, index) => {
           let color;
-          const lastDataPoint = resultData[resultData.length - 1];
+          const lastDataPoint = visibleData[visibleData.length - 1];
           
           if (entry.value === 'Performance') {
             color = getBarColor(lastDataPoint?.performance || 0);
@@ -145,12 +162,28 @@ const PerformancePerMonth = () => {
   }
 
   return (
-    <div className="chart-container bg-gray-900 p-4 md:p-8 rounded-lg w-full">
+    <div className="performance-chart-container bg-gray-900 p-4 md:p-8 rounded-lg w-full">
       <h2 className="monthly-performance-title">Monthly Performance</h2>
-      <div style={{ width: '100%', height: 470 }}>
+      <div className="navigation-buttons">
+        <button 
+          onClick={handlePrev}
+          disabled={startIndex === 0}
+          className="nav-button"
+        >
+          Previous
+        </button>
+        <button 
+          onClick={handleNext}
+          disabled={startIndex + visibleMonths >= resultData.length}
+          className="nav-button"
+        >
+          Next
+        </button>
+      </div>
+      <div style={{ width: '100%', height: 580 }}>
         <ResponsiveContainer>
           <BarChart 
-            data={resultData}
+            data={visibleData}
             margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -169,7 +202,7 @@ const PerformancePerMonth = () => {
             />
             <Legend content={<CustomizedLegend />} />
             <Bar dataKey="performance" name="Performance">
-              {resultData.map((entry, index) => (
+              {visibleData.map((entry, index) => (
                 <Cell 
                   key={`cell-${index}`}
                   fill={getBarColor(entry.performance)}
@@ -178,7 +211,7 @@ const PerformancePerMonth = () => {
             </Bar>
             {isValidSession && (
               <Bar dataKey="netIncome" name="Net Income">
-                {resultData.map((entry, index) => (
+                {visibleData.map((entry, index) => (
                   <Cell 
                     key={`cell-netIncome-${index}`}
                     fill={getNetIncomeColor(entry.netIncome)}
@@ -188,6 +221,9 @@ const PerformancePerMonth = () => {
             )}
           </BarChart>
         </ResponsiveContainer>
+      </div>
+      <div className="pagination-info">
+        Showing months {startIndex + 1} to {Math.min(startIndex + visibleMonths, resultData.length)} of {resultData.length}
       </div>
     </div>
   );
