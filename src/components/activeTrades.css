@@ -144,6 +144,12 @@
         align-items: center; 
         gap: 5px; 
     }
+    .net-income-span{
+        margin-right: 30px !important;
+    }
+    .trade-price-span{
+        margin-right: 70px;
+    }
 }
 
 @media screen and (max-width: 480px) {

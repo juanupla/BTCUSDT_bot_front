@@ -75,48 +75,56 @@ const ControlPanel = () => {
     });
   }
   const handleDeleteUser = async (email) => {
-    try {
-      const data = {
-        email : email
-      }
-      const response = await deletUser(data);
-      if (response.status === 200) {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete!",
+      cancelButtonText: "No, cancel!",
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      reverseButtons: true
+    });
+    
+    if (result.isConfirmed) {
+      try {
+        const data = { email: email };
+        const response = await deletUser(data);
+        
+        if (response.status === 200) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "User has been deleted.",
+            icon: "success",
+            timer: 2000
+          });
+          
+          // Actualizar la lista de usuarios
+          const updatedUsers = await getUsers();
+          setUsers(updatedUsers);
+        } else if (response.status === 404) {
+          Swal.fire({
+            title: "User not found",
+            icon: "warning",
+            timer: 2000
+          });
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: "User can't be deleted",
+            icon: "error",
+            timer: 2000
+          });
+        }
+      } catch (error) {
+        console.error('Error deleting user: ', error);
         Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Usuario eliminado",
-          showConfirmButton: false,
-          timer: 2000
-        });
-
-        const updatedUsers = await getUsers();
-        setUsers(updatedUsers);
-      } else if (response.status === 404) {
-        Swal.fire({
-          position: "top-end",
-          icon: "warning",
-          title: "Usuario no encontrado",
-          showConfirmButton: false,
-          timer: 2000
-        });
-      } else {
-        Swal.fire({
-          position: "top-end",
+          title: "Error",
+          text: "An error occurred while trying to delete the user",
           icon: "error",
-          title: "No se eliminó el usuario",
-          showConfirmButton: false,
           timer: 2000
         });
       }
-    } catch (error) {
-      console.error('Error al eliminar usuario:', error);
-      Swal.fire({
-        position: "top-end",
-        icon: "error",
-        title: "No se eliminó el usuario",
-        showConfirmButton: false,
-        timer: 2000
-      });
     }
   };
 

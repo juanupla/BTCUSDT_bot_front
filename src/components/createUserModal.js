@@ -15,16 +15,28 @@ const CreateUserModal = ({ show, onClose, onUserCreated }) => {
     const handleSubmit = async () => {
       try {
         const response = await createUser(formData);
-        onUserCreated(response); // Callback para actualizar la lista de usuarios
-        onClose();
-        setFormData({ name: '', lastName: '', email: '', password: '' }); // Limpiar form
-        Swal.fire({
+        if(response.status === "OK"){
+          onUserCreated(response); // Callback para actualizar la lista de usuarios
+          onClose();
+          setFormData({ name: '', lastName: '', email: '', password: '' }); // Limpiar form
+          Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "The user has been registered.",
+              showConfirmButton: false,
+              timer: 1700
+            });
+        }
+        else{
+          Swal.fire({
             position: "top-end",
-            icon: "success",
-            title: "The user has been registered.",
+            icon: "error",
+            title: "The user hasn't been registered.",
             showConfirmButton: false,
             timer: 1700
           });
+        }
+       
       } catch (error) {
         setError(error.response?.data?.message || 'Error al crear usuario');
         Swal.fire({
