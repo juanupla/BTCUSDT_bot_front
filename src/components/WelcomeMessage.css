@@ -1,0 +1,20 @@
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .welcome-message {
+    font-size: 0.81rem;
+    font-weight: 500;
+    color: #70583b; 
+    margin: 0;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .welcome-message {
+      font-size: 1rem;
+    }
+  }

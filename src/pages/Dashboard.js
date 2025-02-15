@@ -5,6 +5,7 @@ import BotStatus from '../components/BotStatus';
 import ActiveTrades from '../components/activeTrades';
 import { getToken } from '../services/Auth';
 import { jwtDecode } from 'jwt-decode';
+import WelcomeMessage from '../components/WelcomeMessage';
 import './dashboard.css'
 
 
@@ -56,6 +57,9 @@ const Dashboard = () => {
   return (
     <div className='container-fluid panel'>
       <div className="row cont">
+        <div className='col-12'>
+          <WelcomeMessage></WelcomeMessage>
+        </div>
         <div className='col-12'>
           <BotStatus apiData={botStatus}></BotStatus>
         </div>
