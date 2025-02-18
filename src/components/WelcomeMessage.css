@@ -11,6 +11,7 @@
     color: #70583b; 
     margin: 0;
     text-align: center;
+    margin-left: 4vh;
   }
   
   @media (max-width: 768px) {

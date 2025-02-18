@@ -60,7 +60,7 @@ const Dashboard = () => {
         <div className='col-12'>
           <WelcomeMessage></WelcomeMessage>
         </div>
-        <div className='col-12'>
+        <div className='col-12 bot-status-cont'>
           <BotStatus apiData={botStatus}></BotStatus>
         </div>
         <hr className='hr'></hr>

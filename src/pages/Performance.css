@@ -11,6 +11,9 @@
     background: linear-gradient(to bottom, #000000, #1a1a1a, #0f1a2b);
 
 }
+.bot-tatus-container{
+    background-color: #000000;
+}
 
  @media screen and (max-width: 580px) {
 

@@ -36,7 +36,7 @@ const Performance = () => {
   return (
     <div className='container-fluid pnl'>
       <div className="row cont">
-        <div className='col-12'>
+        <div className='col-12 bot-tatus-container'>
           <BotStatus apiData={botStatus}></BotStatus>
         </div>
         <hr className='hr'></hr>

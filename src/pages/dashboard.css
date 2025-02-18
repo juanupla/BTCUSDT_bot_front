@@ -7,6 +7,10 @@
     align-items: center;
 }
 
+.bot-status-cont{
+    background-color: #000000;
+}
+
 .ema{
     width: 85% !important;
     background: transparent;

@@ -32,7 +32,9 @@ const ControlPanel = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, change status!"
+      confirmButtonText: "Yes, change status!",
+      cancelButtonText: "No, cancel!"
+
     }).then( async (result) => {
       if (result.isConfirmed) {
         if(botStatus===true){
@@ -82,9 +84,8 @@ const ControlPanel = () => {
       confirmButtonText: "Yes, delete!",
       cancelButtonText: "No, cancel!",
       confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      reverseButtons: true
-    });
+      cancelButtonColor: "#d33"
+      });
     
     if (result.isConfirmed) {
       try {
@@ -234,7 +235,7 @@ const ControlPanel = () => {
                               <th>Name</th>
                               <th>LastName</th>
                               <th>Email</th>
-                              <th>Acciones</th>
+                              <th>Actions</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -248,7 +249,7 @@ const ControlPanel = () => {
                                     className="btn btn-danger btn-sm" 
                                     onClick={() => handleDeleteUser(user.email)}
                                   >
-                                    Eliminar
+                                    Delete
                                   </button>
                                 </td>
                               </tr>
@@ -288,10 +289,10 @@ const ControlPanel = () => {
                           <table className="table table-dark table-hover">
                             <thead>
                               <tr>
-                                <th>Fecha</th>
-                                <th>Precio</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
+                                <th>Date</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Actions</th>
                               </tr>
                             </thead>
                           </table>
@@ -304,10 +305,10 @@ const ControlPanel = () => {
                           <table className="table table-dark table-hover">
                             <thead>
                               <tr>
-                                <th>Fecha</th>
-                                <th>Precio</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
+                                <th>Date</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Actions</th>
                               </tr>
                             </thead>
                           </table>

@@ -12,9 +12,22 @@
   font-weight: bold;
 }
 
-/* items de navegación */
 .navbar-nav .nav-item {
   margin-left: 3vh;
+  transition: opacity 0.3s ease;
+}
+
+.navbar-nav .nav-item.admin-item {
+  position: relative;
+}
+
+.navbar-nav .nav-item.admin-item::after {
+  content: '👑';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 12px;
+  opacity: 0.8;
 }
 
 .login-container-nav {
@@ -75,5 +88,15 @@
   
   .nav-link:hover {
     background-color: rgba(247, 147, 26, 0.1);
+  }
+
+  .BTCStra {
+    margin-left: 0vh;
+  }
+
+  .navbar-nav .nav-item.admin-item::after {
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
   }
 }
