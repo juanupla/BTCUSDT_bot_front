@@ -195,3 +195,18 @@ export const startBot = async () =>{
     throw error;
   }
 }
+
+export const getPerformanceOperations = async () =>{
+  try{
+    const token = getToken();
+    const response = await api.get('api/v1/unprocessed-operations', {
+      headers: {
+        'Authorization':`Bearer ${token}`
+      }
+    })
+  return response.data.data
+
+  } catch(error){
+
+  }
+}

@@ -4,6 +4,7 @@ import { getToken,removeToken } from '../services/Auth';
 import { jwtDecode } from 'jwt-decode';
 import Swal from 'sweetalert2'
 
+
 import './activeTrades.css'
 
 const ActiveTrades = () => {
@@ -30,7 +31,9 @@ const ActiveTrades = () => {
                               title: "Your session has expired",
                               showConfirmButton: false,
                               timer: 2000
-                            });
+                            }).then(() => {
+                              window.location.reload();
+                          });
                           return false;
                       }
                   } catch (error) {

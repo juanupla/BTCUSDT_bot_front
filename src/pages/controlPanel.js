@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import './controlPanel.css';
 import CreateUserModal from '../components/createUserModal';
-import { getStatus, getUsers, deletUser, stopBot, startBot } from '../services/Api';
+import { getStatus, getUsers, deletUser, stopBot, startBot, getPerformanceOperations } from '../services/Api';
 import Swal from 'sweetalert2'
+import { getToken, removeToken } from '../services/Auth';
+import { jwtDecode } from 'jwt-decode';
+
+
 
 
 
@@ -14,6 +18,16 @@ const ControlPanel = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [users, setUsers] = useState([]);
+
+  const [isValidSession, setIsValidSession] = useState(false);
+
+  const [purchasePerfromanceOperations,setPurcheasePerformanceOperations] = useState([]);
+
+  const [sellPerformanceOperations,setSellPerformanceOperations] = useState([]);
+
+  const [selectedRow, setSelectedRow] = useState(null);
+
+  
 
   const handleUserCreated = async (newUser) => {
     try {
@@ -128,9 +142,37 @@ const ControlPanel = () => {
       }
     }
   };
-
   useEffect(() => {
+    const checkAuth = () => {
+                const token = getToken();
+                if (!token) return false;
+                try {
+                    const decodedToken = jwtDecode(token);
+                    const currentTime = Math.floor(Date.now() / 1000);
+                    if (decodedToken.exp > currentTime) {
+                        return true;
+                    } else {
+                        removeToken();
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "warning",
+                            title: "Your session has expired",
+                            showConfirmButton: false,
+                            timer: 2000
+                        }).then(() => {
+                            window.location.reload();
+                        });
+                        return false;
+                    }
+                } catch (error) {
+                    return false;
+                }
+            };
+
     const fetchData = async () => {
+      const validSession = checkAuth();
+      setIsValidSession(validSession);
+
       try {
         const status = await getStatus();
         setBotStatus(status);
@@ -144,6 +186,15 @@ const ControlPanel = () => {
       } catch (error) {
         console.error('Error al cargar los datos:', error);
       }
+      try{
+        const operations = await getPerformanceOperations();
+        setPurcheasePerformanceOperations(operations.filter(op => op.type === "BUY"))
+        setSellPerformanceOperations(operations.filter(op => op.type === "SELL"))
+      } catch (error){
+
+      }
+
+      
     };
     fetchData();
   }, []);
@@ -152,9 +203,11 @@ const ControlPanel = () => {
     <div className="container-fluid p-0">
       <div className="admin-panel-container">
         <div className="row m-0">
+        {isValidSession && (
           <div className="col-12">
             <h1 className="admin-title">Administrative Control Panel </h1>
             
+
             <div className="nav-tabs-wrapper">
               <ul className="nav nav-tabs custom-tabs internal-nav">
                 <li className="nav-item">
@@ -203,8 +256,6 @@ const ControlPanel = () => {
                         <span className='Status'>{botStatus ? <div className='Status-on'>ON</div> : <div className='Status-off'>OFF</div>}</span>
                         <button
                           className={`btn ${botStatus ? 'btn-danger' : 'btn-warning'}`}
-//------------------------Esto de abajo tiene que ser uan funcion. consultar is estaseguro y pega al endpoint. si es todo correcto 
-//                        setBotStatus(!botStatus), sino no. y se muestra sweetalert
                           onClick={() => handleStatusControl()} 
                         >
                           {botStatus ? 'Stop Bot' : 'Start Bot'}
@@ -290,11 +341,34 @@ const ControlPanel = () => {
                             <thead>
                               <tr>
                                 <th>Date</th>
+                                <th>Type</th>
                                 <th>Price</th>
-                                <th>Status</th>
+                                <th>Amount</th>
+                                <th>Total Operation</th>
+                                <th>performanceCalculated</th>
                                 <th>Actions</th>
                               </tr>
                             </thead>
+                            <tbody>
+                              {purchasePerfromanceOperations.map((pOperation, index) => (
+                                <tr key={index}>
+                                  <td>{pOperation.date}</td>
+                                  <td>{pOperation.type}</td>
+                                  <td>{Number(pOperation.price).toFixed(2)}</td>
+                                  <td>{Number(pOperation.amount).toFixed(6)}</td>
+                                  <td>{Number(pOperation.totalOperation).toFixed(2)}</td>
+                                  <td>{pOperation.performanceCalculated ? "True" : "False"}</td>
+                                  <td>
+                                  <input
+                                    type="checkbox"
+                                    checked={selectedRow === index}
+                                    onChange={() => setSelectedRow(selectedRow === index ? null : index)}
+                                    className="form-check-input cl-damger"
+                                  />
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
                           </table>
                         </div>
                       </div>
@@ -306,11 +380,25 @@ const ControlPanel = () => {
                             <thead>
                               <tr>
                                 <th>Date</th>
+                                <th>Type</th>
                                 <th>Price</th>
-                                <th>Status</th>
-                                <th>Actions</th>
+                                <th>Amount</th>
+                                <th>Total Operation</th>
+                                <th>performanceCalculated</th>
                               </tr>
                             </thead>
+                            <tbody>
+                            {sellPerformanceOperations.map((sOperation, index) => (
+                                <tr key={index}>
+                                  <td>{sOperation.date}</td>
+                                  <td>{sOperation.type}</td>
+                                  <td>{Number(sOperation.price).toFixed(2)}</td>
+                                  <td>{Number(sOperation.amount).toFixed(6)}</td>
+                                  <td>{Number(sOperation.totalOperation).toFixed(2)}</td>
+                                  <td>{sOperation.performanceCalculated ? "True" : "False"}</td>
+                                </tr>
+                              ))}
+                            </tbody>
                           </table>
                         </div>
                       </div>
@@ -324,6 +412,8 @@ const ControlPanel = () => {
               )}
             </div>
           </div>
+        )}
+          
         </div>
       </div>
     </div>

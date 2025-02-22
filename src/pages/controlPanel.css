@@ -28,9 +28,9 @@
   }
   
   .nav-tabs .nav-link.active {
-    color: #ffd700;
+    color: #e2b63d;
     background-color: transparent;
-    border-bottom: 2px solid #ffd700;
+    border-bottom: 2px solid #e2b63d;
   }
   
   .card {
@@ -66,14 +66,14 @@
   }
   
   .btn-warning {
-    background-color: #ffd700;
-    border-color: #ffd700;
+    background-color: #e2b63d;
+    border-color: #e2b63d;
     color: #000;
   }
   
   .btn-warning:hover {
-    background-color: #ffed4a;
-    border-color: #ffed4a;
+    background-color: #e2b63d;
+    border-color: #e2b63d;
     color: #000;
   }
 
