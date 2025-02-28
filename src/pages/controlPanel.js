@@ -1,7 +1,7 @@
 import React, { use, useEffect, useState } from 'react';
 import './controlPanel.css';
 import CreateUserModal from '../components/createUserModal';
-import { getStatus, getUsers, deletUser, stopBot, startBot, getPerformanceOperations } from '../services/Api';
+import { getStatus, getUsers, deletUser, stopBot, startBot, getPerformanceOperations, createNewPerformance } from '../services/Api';
 import Swal from 'sweetalert2'
 import { getToken, removeToken } from '../services/Auth';
 import { jwtDecode } from 'jwt-decode';
@@ -90,6 +90,7 @@ const ControlPanel = () => {
       }
     });
   }
+
   const handleDeleteUser = async (email) => {
     const result = await Swal.fire({
       title: "Are you sure?",
@@ -142,6 +143,42 @@ const ControlPanel = () => {
       }
     }
   };
+
+  const performanceOrderPetition = async () => {
+    if(selectedRow === null){
+      Swal.fire({
+        position: "top-end",
+        icon: "warning",
+        title: "You need check one purchease operation",
+        showConfirmButton: false,
+        timer: 2000
+      })
+      return;
+    }
+  
+    const data = purchasePerfromanceOperations[selectedRow]
+    const response = await createNewPerformance(data);
+  
+    if(response.status === "OK"){
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "The new performance has been calculated.",
+        showConfirmButton: false,
+        timer: 2000
+      })
+    } else {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "A problem has occurred",
+        showConfirmButton: false,
+        timer: 2000
+      })
+    }
+  }
+
+
   useEffect(() => {
     const checkAuth = () => {
                 const token = getToken();
@@ -385,6 +422,7 @@ const ControlPanel = () => {
                                 <th>Amount</th>
                                 <th>Total Operation</th>
                                 <th>performanceCalculated</th>
+                                <th>Actions</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -403,7 +441,7 @@ const ControlPanel = () => {
                         </div>
                       </div>
 
-                      <button className="btn btn-warning justify-content-end">
+                      <button className="btn btn-warning justify-content-end" onClick={() => performanceOrderPetition()}>
                         Create a new performance operation
                       </button>
                     </div>

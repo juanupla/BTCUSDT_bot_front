@@ -210,3 +210,17 @@ export const getPerformanceOperations = async () =>{
 
   }
 }
+
+export const createNewPerformance = async (performance) => {
+  try {
+    const token = getToken();
+    const response = await api.post('api/v1/processAnyOperations', performance ,{
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
