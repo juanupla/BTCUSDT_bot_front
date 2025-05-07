@@ -88,7 +88,6 @@ const ClosedTrades = () => {
                         </div>
                         <div className="closed-trade-right">
                             <div className="closed-trade-prices">
-                                
                                 <div className="closed-trade-buy-price">
                                    <span className='buyColor'>BUY</span> 
                                    ${trade.buyOperation.price.toFixed(2)}

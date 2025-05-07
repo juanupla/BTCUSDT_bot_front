@@ -40,7 +40,7 @@ const Performance = () => {
           <BotStatus apiData={botStatus}></BotStatus>
         </div>
         <hr className='hr'></hr>
-        <div className="col-12 closeTrades mt-4">
+        <div className="col-12 closeTrades mt-1">
           <PerformancePerMonth></PerformancePerMonth>
         </div>
         <div className='col-12 closeTrades mt-2'>

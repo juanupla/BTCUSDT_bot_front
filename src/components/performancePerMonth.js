@@ -162,7 +162,7 @@ const PerformancePerMonth = () => {
   }
 
   return (
-    <div className="performance-chart-container bg-gray-900 p-4 md:p-8 rounded-lg w-full">
+    <div className="performance-chart-container bg-gray-900  md:p-8 rounded-lg w-full">
       <h2 className="monthly-performance-title">Monthly Performance</h2>
       <div className="navigation-buttons">
         <button 
@@ -180,7 +180,7 @@ const PerformancePerMonth = () => {
           Next
         </button>
       </div>
-      <div style={{ width: '100%', height: 580 }}>
+      <div style={{ width: '100%', height: 500 }}>
         <ResponsiveContainer>
           <BarChart 
             data={visibleData}
