@@ -5,7 +5,6 @@ import Header from './components/Header';
 import Dashboard from './pages/dashboardTEMP';
 import Performance from './pages/Performance';
 import Login from './pages/Login';
-import ProtectedRoute from './components/ProtectedRoute';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ControlPanel from './pages/controlPanel';
 import './App.css'
