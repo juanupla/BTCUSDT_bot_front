@@ -10,7 +10,6 @@ const CreateUserModal = ({ show, onClose, onUserCreated }) => {
       email: '',
       password: ''
     });
-    const [error, setError] = useState('');
   
     const handleSubmit = async () => {
       try {
@@ -38,7 +37,6 @@ const CreateUserModal = ({ show, onClose, onUserCreated }) => {
         }
        
       } catch (error) {
-        setError(error.response?.data?.message || 'Error al crear usuario');
         Swal.fire({
             position: "top-end",
             icon: "error",

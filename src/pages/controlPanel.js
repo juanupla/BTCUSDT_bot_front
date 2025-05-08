@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './controlPanel.css';
 import CreateUserModal from '../components/createUserModal';
 import { getStatus, getUsers, deletUser, stopBot, startBot, getPerformanceOperations, createNewPerformance } from '../services/Api';

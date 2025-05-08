@@ -10,8 +10,7 @@ import './activeTrades.css'
 const ActiveTrades = () => {
     const [trades, setTrades] = useState([]);
     const [isValidSession, setIsValidSession] = useState(false);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+
     
 
     useEffect(() => {
@@ -53,11 +52,8 @@ const ActiveTrades = () => {
             setTrades(publicResponse);
           }
           
-          setLoading(false);
         } catch (error) {
           console.error('Error fetching trades:', error);
-          setError(error);
-          setLoading(false);
         }
       };
   

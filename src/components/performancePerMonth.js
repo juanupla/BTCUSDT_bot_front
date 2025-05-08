@@ -48,7 +48,7 @@ const PerformancePerMonth = () => {
   const [loading, setLoading] = useState(true);
   const [isValidSession, setIsValidSession] = useState(false);
   const [data, setData] = useState([]);
-  const [visibleMonths, setVisibleMonths] = useState(6);
+  const [visibleMonths] = useState(6);
   const [startIndex, setStartIndex] = useState(0);
 
   useEffect(() => {

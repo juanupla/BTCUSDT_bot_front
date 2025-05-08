@@ -3,8 +3,6 @@ import Chart from '../components/Chart';
 import { getEMAs, getStatus } from '../services/Api';
 import BotStatus from '../components/BotStatus';
 import ActiveTrades from '../components/activeTrades';
-import { getToken } from '../services/Auth';
-import { jwtDecode } from 'jwt-decode';
 import WelcomeMessage from '../components/WelcomeMessage';
 import './dashboard.css'
 
@@ -13,22 +11,10 @@ const Dashboard = () => {
   const [emasData, setEmasData] = useState([]); 
   const [botStatus, setBotStatus] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [isValidSession, setIsValidSession] = useState(false);
 
 
   useEffect(() => {
-    const checkAuth = () => {
-      const token = getToken();
-      if (!token) return false;
-
-      try {
-        const decodedToken = jwtDecode(token);
-        const currentTime = Math.floor(Date.now() / 1000);
-        return decodedToken.exp > currentTime;
-      } catch (error) {
-        return false;
-      }
-    };
+    
 
     const fetchData = async () => {
       try {
@@ -38,7 +24,6 @@ const Dashboard = () => {
         const status = await getStatus();
         setBotStatus(status);
         
-        setIsValidSession(checkAuth());
 
         setLoading(false);
       } catch (error) {
