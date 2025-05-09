@@ -84,11 +84,19 @@ const PerformancePerMonth = () => {
     fetchData();
   }, []);
 
-  const resultData = data.map((item) => ({
+  /*const resultData = data.map((item) => ({
     name: `${item.year}-${item.month}`,
     performance: item.monthlyPerformance,
     netIncome: isValidSession ? item.netIncome : undefined
-  }));
+  }));*/
+  const resultData = Array.isArray(data) && data.length > 0 
+  ? data.map((item) => ({
+      name: `${item.year}-${item.month}`,
+      performance: item.monthlyPerformance,
+      netIncome: isValidSession ? item.netIncome : undefined
+    }))
+  : [];  // Si no hay datos o data no es un arreglo, resultData será un arreglo vacío
+
 
   // Slice the data to show only visible months
   const visibleData = resultData.slice(startIndex, startIndex + visibleMonths);
