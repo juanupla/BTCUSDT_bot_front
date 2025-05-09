@@ -30,7 +30,7 @@ const ClosedTrades = () => {
                         showConfirmButton: false,
                         timer: 2000
                     }).then(() => {
-                        window.location.reload();
+                        window.location.href = "https://btc-strategy.netlify.app/";
                     });
                     return false;
                 }
