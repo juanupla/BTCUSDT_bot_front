@@ -29,11 +29,11 @@ export const getOperations = async () => {
 
 export const getPrivateOperations = async () => {
   const token = getToken();
-  const now = new Date().toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" });
-  const currentDate = new Date(now).toISOString(); // convierte a formato ISO - requerida por la ap
-  const oneYearAgo = new Date(new Date(now).setFullYear(new Date(now).getFullYear() - 1)).toISOString();
+  //const now = new Date().toLocaleString("en-US", { timeZone: "America/Argentina/Buenos_Aires" });
+  //const currentDate = new Date(now).toISOString(); // convierte a formato ISO - requerida por la ap
+  //const oneYearAgo = new Date(new Date(now).setFullYear(new Date(now).getFullYear() - 1)).toISOString();
   return api
-    .get(`api/v1/private-historical-operations?start=${oneYearAgo}&end=${currentDate}`,{
+    .get(`api/v1/private-historical-operations`,{//?start=${oneYearAgo}&end=${currentDate}
       headers:{
         'Authorization': `Bearer ${token}`
       }
