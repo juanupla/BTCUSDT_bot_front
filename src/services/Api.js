@@ -34,8 +34,8 @@ export const getPrivateOperations = async () => {
   const oneYearAgo = new Date(new Date(now).setFullYear(new Date(now).getFullYear() - 2)).toISOString();
   const response = await api
     .get(`api/v1/private-historical-operations?start=${oneYearAgo}&end=${currentDate}`,{
-      headers:{
-        'Authorization': `Bearer ${token}`
+      headers: {
+        'Authorization':`Bearer ${token}`
       }
     })
     return response.data.data;

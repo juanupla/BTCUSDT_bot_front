@@ -13,7 +13,7 @@ const Login = () => {
     try {
       const response = await postLogin(email, password);
       if (response.status === 'OK') {
-        window.location.href = 'https://btc-strategy.netlify.app/';
+        window.location.reload();
       }
     } catch (err) {
       setError('Error al ingrear. Verifica tus credenciales.');
