@@ -58,14 +58,15 @@ const Header = () => {
                 <Link className="nav-link" to="/control-panel">Control Panel</Link>
               </li>
             )}
-          </ul>
-
-          <div className="login-container-nav" onClick={toggleMenu}>
+            <div className="login-container-nav" onClick={toggleMenu}>
             <Link className="login-button-nav" to="/login">
               <span className="login-icon">₿</span>
               <span className="login-text">Login</span>
             </Link>
           </div>
+          </ul>
+
+          
         </div>
       </div>
     </nav>
