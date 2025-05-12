@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { postLogin } from '../services/Api';
-import './Login.css'
+import { saveToken } from '../services/Auth';
+import './Login.css';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -13,15 +16,16 @@ const Login = () => {
     try {
       const response = await postLogin(email, password);
       if (response.status === 'OK') {
-        window.location.reload();
+        saveToken(response.token);  
+        navigate('/dashboard');     
       }
     } catch (err) {
-      setError('Error al ingrear. Verifica tus credenciales.');
+      setError('Error al ingresar. Verifica tus credenciales.');
     }
   };
 
   const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+    setShowPassword(prev => !prev);
   };
 
   return (
