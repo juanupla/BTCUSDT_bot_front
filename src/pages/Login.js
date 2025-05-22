@@ -16,7 +16,7 @@ const Login = () => {
     try {
       const response = await postLogin(email, password);
       if (response.status === 'OK') {
-        saveToken(response.token);  
+        saveToken(response.data.token);  
         navigate('/dashboard');     
       }
     } catch (err) {
