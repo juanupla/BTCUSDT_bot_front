@@ -163,7 +163,7 @@ const PerformancePerMonth = () => {
     return (
       <div className="chart-container bg-gray-900 p-4 md:p-8 rounded-lg w-full">
         <div className="w-full h-[400px] flex items-center justify-center text-white">
-          No data available
+          Aún no existen registros de rendimientos mensuales. Próximamente, conforme pase el tiempo, se podrán visualizar las estadísticas.
         </div>
       </div>
     );
