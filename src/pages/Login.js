@@ -17,7 +17,7 @@ const Login = () => {
       const response = await postLogin(email, password);
       if (response.status === 'OK') {
         saveToken(response.data.token);  
-        navigate('/dashboard');     
+        window.location.href = '/dashboard';     
       }
     } catch (err) {
       setError('Error al ingresar. Verifica tus credenciales.');
