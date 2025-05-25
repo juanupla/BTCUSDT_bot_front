@@ -5,7 +5,6 @@ import { saveToken } from '../services/Auth';
 import './Login.css';
 
 const Login = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
