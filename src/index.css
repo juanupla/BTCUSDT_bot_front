@@ -1,10 +1,14 @@
 /* Fondo negro total y sin rebote de scroll */
 html, body, #root {
-  background-color: black;
-  height: 100%;
   margin: 0;
-  overscroll-behavior: none;
+  padding: 0;
+  height: 100%;
+  background-color: black;
+  overscroll-behavior-y: contain; /* cambia de 'none' a 'contain' para permitir scroll interno si hay */
+  overflow-x: hidden;
+  overflow-y: auto;
 }
+
 
 /* Estilo base de texto y suavizado */
 body {
