@@ -1,16 +1,15 @@
-/* Fondo negro total y sin rebote de scroll */
+/* Fondo negro y sin scroll */
 html, body, #root {
   margin: 0;
   padding: 0;
   height: 100%;
   background-color: black;
-  overscroll-behavior-y: contain; /* cambia de 'none' a 'contain' para permitir scroll interno si hay */
+  overscroll-behavior: none;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-
-/* Estilo base de texto y suavizado */
+/* Estilo  */
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -20,8 +19,8 @@ body {
   width: 100%;
 }
 
-/* Tipografía para elementos <code> */
+/* Tipografía*/
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} 
