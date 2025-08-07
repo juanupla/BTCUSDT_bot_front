@@ -3,7 +3,7 @@ import { getToken, saveToken } from './Auth';
 
 
 const api = axios.create({
-  baseURL: 'https://www.dataweb-api.duckdns.org/',
+  baseURL: 'https://dataweb-api.duckdns.org/',
 });
 
 
