@@ -1,6 +1,5 @@
 .AppCont {
   background-color: black;
-  min-height: 100vh; /* fuerza que el contenido ocupe toda la altura de la pantalla */
   padding: 0;
   margin: 0;
 }
