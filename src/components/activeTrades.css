@@ -150,6 +150,10 @@
     .trade-price-span{
         margin-right: 70px;
     }
+    .trades-scroll-container {
+    scrollbar-color: #333 #1a1a1a;
+
+}
 }
 
 @media screen and (max-width: 480px) {
@@ -159,7 +163,7 @@
     }
 
     .trades-scroll-container {
-        max-height: 300px; /*  pantallas + pequeñas */
+        max-height: 300px; 
     }
 
     .trades-title {

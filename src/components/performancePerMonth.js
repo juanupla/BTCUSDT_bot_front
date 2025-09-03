@@ -26,10 +26,9 @@ const CustomTooltip = ({ active, payload, label }) => {
           }}
         >
           {pld.name}: {
-            pld.name === 'Performance' 
-              ? `${pld.value}%` 
-              : `${pld.value}$`
-          }
+          pld.name === 'Performance' 
+          ? `${Number(pld.value).toFixed(2)}%` 
+          : `${Number(pld.value).toFixed(2)}$`}
         </p>
       ))}
     </div>
